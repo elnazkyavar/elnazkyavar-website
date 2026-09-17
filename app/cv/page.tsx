@@ -1,0 +1,6 @@
+import type { Metadata } from "next";
+import { Header } from "../../components/Header";
+import { Footer } from "../../components/Footer";
+import { ArrowLink } from "../../components/ArrowLink";
+export const metadata: Metadata = { title: "CV", description: "Curriculum vitae for Elnaz Kyavar.", openGraph: { title: "CV — Elnaz Kyavar", description: "Curriculum vitae for Elnaz Kyavar.", images: [] }, twitter: { title: "CV — Elnaz Kyavar", description: "Curriculum vitae for Elnaz Kyavar.", images: [] } };
+export default function CVPage() { return <><Header /><main><section className="page-hero"><p className="eyebrow">Curriculum vitae</p><h1>A verified academic record.</h1><p>This page is ready for confirmed education, research experience, publications, presentations, service, skills, and honors. Details will be added only from a current, verified CV.</p></section><section className="content-list"><article className="content-row"><span className="content-number">CV</span><div><h2>Document forthcoming</h2><p>A downloadable CV will be published here once the source document and its details are confirmed.</p><ArrowLink href="/contact">Request information</ArrowLink></div></article></section></main><Footer /></> }
