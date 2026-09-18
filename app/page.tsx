@@ -1,16 +1,24 @@
 import Link from "next/link";
 import { Header } from "../components/Header";
-import { Footer } from "../components/Footer";
-import { ArrowLink } from "../components/ArrowLink";
-import { latest } from "../lib/site-data";
+import { ScientificOrbit } from "../components/ScientificOrbit";
 
 export default function Home() {
-  return <><Header /><main>
-    <section className="hero"><div className="hero-index" aria-hidden="true"><span>EK</span><i /></div><div className="hero-content"><p className="eyebrow">Bioscience researcher · Evidence-led inquiry</p><h1>Connecting biological evidence to the mechanisms that matter.</h1><p className="hero-copy">Elnaz Kyavar is a researcher working at the intersection of rigorous evidence assessment and mechanistic reasoning in bioscience.</p><div className="hero-actions"><Link className="button" href="/research">Explore the research</Link><ArrowLink href="/evidence-mechanism">Evidence &amp; Mechanism</ArrowLink></div></div></section>
-    <section className="signal-strip" aria-label="Research approach"><span>Evidence calibration</span><span>Mechanistic reasoning</span><span>Scientific synthesis</span></section>
-    <section className="editorial-section statement"><p className="section-kicker">Research orientation</p><div><h2>Better explanations begin with better-calibrated claims.</h2><p>My research approach connects methodological scrutiny with biological interpretation. The aim is not simply to collect findings, but to understand how evidence supports—or constrains—the explanations we build from it.</p><ArrowLink href="/research">Research approach</ArrowLink></div></section>
-    <section className="editorial-section highlights"><div className="section-heading"><p className="section-kicker">Selected highlights</p><h2>A focused research practice.</h2></div><div className="highlight-grid"><article><span>01</span><h3>Evidence calibration</h3><p>Matching the confidence, scope, and language of a claim to the evidence that supports it.</p></article><article><span>02</span><h3>Mechanistic reasoning</h3><p>Developing explanations with explicit components, causal sequences, and testable alternatives.</p></article><article><span>03</span><h3>Scientific synthesis</h3><p>Integrating heterogeneous findings without flattening disagreement or hiding uncertainty.</p></article></div></section>
-    <section className="editorial-section latest-section"><div className="section-heading"><p className="section-kicker">Latest from Elnaz</p><h2>Ideas, frameworks, and updates.</h2></div><div className="latest-list">{latest.map((item, index) => <Link href={item.href} className="latest-item" key={item.title}><span className="item-number">0{index + 1}</span><div><p className="item-type">{item.type}</p><h3>{item.title}</h3><p>{item.excerpt}</p></div><span className="item-arrow" aria-hidden="true">↗</span></Link>)}</div></section>
-    <section className="evidence-callout"><p className="section-kicker">Signature perspective</p><h2>Evidence tells us what we can claim.<br />Mechanism tells us why it might be true.</h2><ArrowLink href="/evidence-mechanism">Enter Evidence &amp; Mechanism</ArrowLink></section>
-  </main><Footer /></>;
+  return <><Header /><main className="home-main">
+    <section className="orbit-hero">
+      <div className="hero-introduction"><p className="home-kicker">Bioscience researcher <i /> evidence-led inquiry</p><h1><span>Dr.</span> Elnaz<br />Kyavar</h1><p>Connecting rigorous evidence assessment with mechanistic reasoning to build clearer, more defensible scientific explanations.</p><Link className="home-cta" href="/research">Explore the research <span aria-hidden="true">↗</span></Link></div>
+      <ScientificOrbit />
+      <aside className="portrait-frame" aria-label="Portrait area for Dr. Elnaz Kyavar"><div className="portrait-field"><span className="portrait-monogram" aria-hidden="true">EK</span><div className="portrait-contour" aria-hidden="true" /></div><p>Dr. Elnaz Kyavar</p><span>Bioscience researcher</span></aside>
+    </section>
+    <section className="home-highlights" aria-labelledby="selected-highlights"><header><p>Selected highlights</p><h2 id="selected-highlights">A research practice built around clarity.</h2></header><div className="home-highlight-grid">
+      <Link href="/research"><span>01 · Research</span><h3>Evidence-led inquiry</h3><p>Research questions shaped by careful calibration, mechanistic thinking, and transparent uncertainty.</p><b aria-hidden="true">↗</b></Link>
+      <Link href="/peer-review-editorial-service"><span>02 · Scientific service</span><h3>Peer Review &amp; Editorial</h3><p>A constructive review approach centered on methodological clarity and proportionate interpretation.</p><b aria-hidden="true">↗</b></Link>
+      <a href="#academic-profiles"><span>03 · Research identity</span><h3>Academic Profiles</h3><p>A prepared directory for verified scholarly identifiers and professional research profiles.</p><b aria-hidden="true">↓</b></a>
+    </div></section>
+  </main><footer className="home-footer" id="academic-profiles"><div className="home-footer-intro"><p>Academic profiles</p><h2>Follow the research record.</h2><span>Profile destinations are prepared and will point to Elnaz’s verified records when exact URLs are confirmed.</span></div><nav aria-label="Academic profile links">
+    <a href="https://orcid.org/" target="_blank" rel="noreferrer"><span>ORCID</span><b>↗</b></a>
+    <a href="https://www.webofscience.com/" target="_blank" rel="noreferrer"><span>Web of Science</span><b>↗</b></a>
+    <a href="https://www.scopus.com/" target="_blank" rel="noreferrer"><span>Scopus</span><b>↗</b></a>
+    <a href="https://scholar.google.com/" target="_blank" rel="noreferrer"><span>Google Scholar</span><b>↗</b></a>
+    <a href="https://www.researchgate.net/" target="_blank" rel="noreferrer"><span>ResearchGate</span><b>↗</b></a>
+  </nav><div className="home-footer-base"><Link href="/">Elnaz Kyavar</Link><span>© {new Date().getFullYear()} · Evidence-led bioscience research</span></div></footer></>;
 }
