@@ -34,7 +34,7 @@ export const schemaTypes = [
   {
     name: "professionalUpdate", title: "Scientific / Professional Update", type: "document", fields: [
       { name: "category", type: "string", options: { list: ["New Paper", "Accepted Paper", "Conference Update", "Professional Update"] } },
-      { name: "title", type: "string" }, { name: "date", type: "date" }, { name: "summary", type: "text" },
+      { name: "title", type: "string" }, { name: "slug", type: "slug", options: { source: "title" } }, { name: "date", type: "date" }, { name: "summary", type: "text" },
       { name: "relatedPublication", type: "reference", to: [{ type: "publication" }] }, { name: "relatedProject", type: "reference", to: [{ type: "project" }] },
       { name: "relatedTalk", type: "reference", to: [{ type: "talk" }] }, { name: "externalLink", type: "url" }, { name: "featuredOnHome", type: "boolean" },
     ],

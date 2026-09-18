@@ -1,8 +1,8 @@
 import Link from "./SiteLink";
-import { researchUpdates } from "../lib/site-content-v2";
+import type { ResearchUpdate } from "../lib/site-content-v2";
 import { CrossPageNav, InternalHero } from "./InternalPageSystem";
 
-export function ResearchNotesIndex({ intro }: { intro: string }) {
+export function ResearchNotesIndex({ intro, researchUpdates }: { intro: string; researchUpdates: ResearchUpdate[] }) {
   const notes = researchUpdates.filter((entry) => entry.contentType === "researchNote");
   const updates = researchUpdates.filter((entry) => entry.contentType !== "researchNote");
 
@@ -21,7 +21,7 @@ export function ResearchNotesIndex({ intro }: { intro: string }) {
             <article className="original-note-card" key={note.slug}>
               <div className="original-note-index"><span>{String(index + 1).padStart(2, "0")}</span><i /></div>
               <div className="original-note-content">
-                <div className="original-note-meta"><span>{note.category}</span><time dateTime="2026-09-18">{note.date}</time></div>
+                <div className="original-note-meta"><span>{note.category}</span><time dateTime={note.dateIso}>{note.date}</time></div>
                 <h3>{note.title}</h3>
                 <p>{note.shortSummary}</p>
                 <div className="original-note-footer">
@@ -44,7 +44,7 @@ export function ResearchNotesIndex({ intro }: { intro: string }) {
         <div className="notes-update-list">
           {updates.map((update) => (
             <article className="scientific-update-row" key={update.slug}>
-              <div className="scientific-update-meta"><span>{update.category}</span><time>{update.date}</time></div>
+              <div className="scientific-update-meta"><span>{update.category}</span><time dateTime={update.dateIso}>{update.date}</time></div>
               <div><h3>{update.title}</h3><p>{update.shortSummary}</p><div className="scientific-update-tags">{update.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></div>
               {update.externalLink
                 ? <a href={update.externalLink} target="_blank" rel="noopener noreferrer">View paper <span aria-hidden="true">↗</span></a>

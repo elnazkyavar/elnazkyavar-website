@@ -182,6 +182,8 @@ export type ResearchUpdate = {
   title: string;
   slug: string;
   date: string;
+  dateIso?: string;
+  modifiedDateIso?: string;
   contentType: "researchNote" | "newPaper" | "acceptedPaper" | "conferenceUpdate" | "professionalUpdate";
   category: "Research Note" | "New Paper" | "Accepted Paper" | "Conference Update" | "Professional Update";
   author?: string;
@@ -197,6 +199,7 @@ export const researchUpdates: ResearchUpdate[] = [
     title: "From association to mechanism: what evidence actually changes a biological claim?",
     slug: "from-association-to-mechanism",
     date: "18 September 2026",
+    dateIso: "2026-09-18",
     contentType: "researchNote",
     category: "Research Note",
     author: "Dr. Elnaz Kyavar",
@@ -218,6 +221,7 @@ export const researchUpdates: ResearchUpdate[] = [
     title: "Expression is not function: why molecular change does not establish mechanistic dependency",
     slug: "expression-is-not-function",
     date: "18 September 2026",
+    dateIso: "2026-09-18",
     contentType: "researchNote",
     category: "Research Note",
     author: "Dr. Elnaz Kyavar",
@@ -239,6 +243,7 @@ export const researchUpdates: ResearchUpdate[] = [
     title: "Why the experimental unit can change the scientific conclusion",
     slug: "experimental-unit-scientific-conclusion",
     date: "18 September 2026",
+    dateIso: "2026-09-18",
     contentType: "researchNote",
     category: "Research Note",
     author: "Dr. Elnaz Kyavar",

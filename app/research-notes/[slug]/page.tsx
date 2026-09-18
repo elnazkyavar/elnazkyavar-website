@@ -4,12 +4,13 @@ import { notFound } from "next/navigation";
 import { Footer } from "../../../components/Footer";
 import { Header } from "../../../components/Header";
 import { researchUpdates } from "../../../lib/site-content-v2";
+import { getResearchUpdates } from "../../../lib/content-source";
 import { getSiteUrl } from "../../../lib/site-config";
 
 type NotePageProps = { params: Promise<{ slug: string }> };
 
-function findNote(slug: string) {
-  return researchUpdates.find((entry) => entry.slug === slug && entry.contentType === "researchNote" && entry.fullBody);
+async function findNote(slug: string) {
+  return (await getResearchUpdates()).find((entry) => entry.slug === slug && entry.contentType === "researchNote" && entry.fullBody);
 }
 
 export function generateStaticParams() {
@@ -19,7 +20,7 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: NotePageProps): Promise<Metadata> {
-  const note = findNote((await params).slug);
+  const note = await findNote((await params).slug);
   if (!note) return {};
 
   return {
@@ -32,9 +33,9 @@ export async function generateMetadata({ params }: NotePageProps): Promise<Metad
 }
 
 export default async function ResearchNotePage({ params }: NotePageProps) {
-  const note = findNote((await params).slug);
+  const note = await findNote((await params).slug);
   if (!note) notFound();
-  const schema = { "@context": "https://schema.org", "@type": "Article", headline: note.title, description: note.shortSummary, datePublished: "2026-09-18", dateModified: "2026-09-18", author: { "@type": "Person", "@id": `${getSiteUrl()}/#person`, name: note.author }, mainEntityOfPage: `${getSiteUrl()}/research-notes/${note.slug}`, keywords: note.tags.join(", ") };
+  const schema = { "@context": "https://schema.org", "@type": "Article", headline: note.title, description: note.shortSummary, datePublished: note.dateIso, dateModified: note.modifiedDateIso ?? note.dateIso, author: { "@type": "Person", "@id": `${getSiteUrl()}/#person`, name: note.author }, mainEntityOfPage: `${getSiteUrl()}/research-notes/${note.slug}`, keywords: note.tags.join(", ") };
 
   return (
     <>
@@ -43,7 +44,7 @@ export default async function ResearchNotePage({ params }: NotePageProps) {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
         <header className="research-note-hero">
           <Link className="research-note-back" href="/research-notes"><span aria-hidden="true">←</span> Research Notes &amp; Updates</Link>
-          <div className="research-note-meta"><span>{note.category}</span><time dateTime="2026-09-18">{note.date}</time></div>
+          <div className="research-note-meta"><span>{note.category}</span><time dateTime={note.dateIso}>{note.date}</time></div>
           <h1>{note.title}</h1>
           <p>{note.shortSummary}</p>
         </header>

@@ -3,10 +3,11 @@ import type { CSSProperties } from "react";
 import Image from "next/image";
 import { Header } from "../components/Header";
 import { ScientificOrbit } from "../components/ScientificOrbit";
-import { researchUpdates } from "../lib/site-content-v2";
+import { getResearchUpdates } from "../lib/content-source";
 import { academicProfiles } from "../lib/site-config";
 
-export default function Home() {
+export default async function Home() {
+  const researchUpdates = await getResearchUpdates();
   return (
     <>
       <Header />
@@ -106,7 +107,7 @@ export default function Home() {
           <div className="home-v2-latest-grid">
             {researchUpdates.filter((entry) => entry.featuredOnHome).slice(0, 3).map((entry) => (
               <article key={entry.slug} className="home-v2-latest-card">
-                <div><span>{entry.category}</span><time>{entry.date}</time></div>
+                <div><span>{entry.category}</span><time dateTime={entry.dateIso}>{entry.date}</time></div>
                 <h3>{entry.title}</h3>
                 <p>{entry.shortSummary}</p>
                 {entry.contentType === "researchNote" && <small className="home-v2-latest-byline">By {entry.author}</small>}

@@ -4,11 +4,12 @@ import Link from "../../../components/SiteLink";
 import { Footer } from "../../../components/Footer";
 import { Header } from "../../../components/Header";
 import { publications } from "../../../lib/site-content-v2";
+import { getPublications } from "../../../lib/content-source";
 import { getSiteUrl } from "../../../lib/site-config";
 
 type PublicationPageProps = { params: Promise<{ slug: string }> };
 
-function findPublication(slug: string) { return publications.find((publication) => publication.slug === slug); }
+async function findPublication(slug: string) { return (await getPublications()).find((publication) => publication.slug === slug); }
 
 function ScientificTitle({ title }: { title: string }) {
   const parts = title.split(/(Arthrospira platensis|Spirulina platensis)/g);
@@ -18,7 +19,7 @@ function ScientificTitle({ title }: { title: string }) {
 export function generateStaticParams() { return publications.map(({ slug }) => ({ slug })); }
 
 export async function generateMetadata({ params }: PublicationPageProps): Promise<Metadata> {
-  const publication = findPublication((await params).slug);
+  const publication = await findPublication((await params).slug);
   if (!publication) return {};
   const canonical = `/publications/${publication.slug}`;
   return {
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: PublicationPageProps): Promis
 }
 
 export default async function PublicationPage({ params }: PublicationPageProps) {
-  const publication = findPublication((await params).slug);
+  const publication = await findPublication((await params).slug);
   if (!publication) notFound();
   const canonical = `${getSiteUrl()}/publications/${publication.slug}`;
   const schema = {
