@@ -1,10 +1,10 @@
-export const siteName = "Elnaz Kyavar";
+export const siteName = "Dr. Elnaz Kyavar";
 
 export const navigation = [
   ["Research", "/research"],
   ["Publications", "/publications"],
   ["Evidence & Mechanism", "/evidence-mechanism"],
-  ["Research Notes", "/research-notes"],
+  ["Research Notes & Updates", "/research-notes"],
   ["Service", "/peer-review-editorial-service"],
   ["Talks", "/talks-conferences"],
   ["Engagement", "/professional-engagement"],
