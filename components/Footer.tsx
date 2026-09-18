@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "./SiteLink";
 import { navigation } from "../lib/site-data";
 
 export function Footer() {

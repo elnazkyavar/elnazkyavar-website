@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "../components/SiteLink";
 import type { CSSProperties } from "react";
 import { Header } from "../components/Header";
 import { ScientificOrbit } from "../components/ScientificOrbit";

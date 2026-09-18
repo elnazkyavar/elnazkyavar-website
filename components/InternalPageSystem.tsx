@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "./SiteLink";
 import type { ContentPage, ContentSection } from "../lib/site-content-v2";
 import { navigation } from "../lib/site-data";
 

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "./SiteLink";
 import { researchUpdates } from "../lib/site-content-v2";
 import { CrossPageNav, InternalHero } from "./InternalPageSystem";
 

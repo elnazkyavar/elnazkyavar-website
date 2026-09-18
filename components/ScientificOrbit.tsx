@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "./SiteLink";
 import { useEffect, useState, type CSSProperties } from "react";
 
 type OrbitItem = {
