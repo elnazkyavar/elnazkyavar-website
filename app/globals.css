@@ -1232,6 +1232,8 @@ a.home-v2-profile-link:hover { background:rgba(255,255,255,.07); }
 
 /* PUBLICATION DETAIL + NOT FOUND */
 .publication-detail-page,.not-found-page { background:#fffefb;color:#202729; }
+.cv-download-group { display:inline-flex;flex-direction:column;align-items:flex-start;gap:.7rem; }
+.cv-download-group small { color:#587174;font-size:.67rem;letter-spacing:.035em; }
 .publication-detail-hero { min-height:70vh;padding:clamp(7rem,12vw,11rem) clamp(1.4rem,8vw,9rem) clamp(4rem,7vw,7rem);position:relative;overflow:hidden;background:linear-gradient(135deg,#fbfaf5,#eef7f4); }
 .publication-detail-hero::after { content:"DOI";position:absolute;right:7vw;top:18%;width:220px;height:220px;display:grid;place-items:center;border:1px solid rgba(46,94,100,.18);border-radius:50%;color:rgba(46,94,100,.24);font:600 1rem var(--font-serif),serif;letter-spacing:.28em;box-shadow:0 0 0 42px rgba(46,94,100,.035),0 0 0 84px rgba(46,94,100,.025); }
 .publication-detail-status { margin:3rem 0 1.5rem;display:flex;flex-wrap:wrap;gap:.5rem; }

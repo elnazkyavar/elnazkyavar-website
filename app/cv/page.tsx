@@ -24,7 +24,7 @@ const cvSections = [
 ] as const;
 
 export default function CVPage() {
-  const download = <a className="cv-download" href="/elnaz-kyavar-academic-cv.pdf" download>Download CV <span aria-hidden="true">↓</span></a>;
+  const download = <div className="cv-download-group"><a className="cv-download" href="/elnaz-kyavar-academic-cv.pdf" download>Download CV <span aria-hidden="true">↓</span></a><small>Last updated: September 2026</small></div>;
   return <><Header /><main className="internal-page cv-page"><InternalHero eyebrow="Curriculum vitae" title="Academic profile" intro="Dr. Elnaz Kyavar is a plant physiologist and biotechnology researcher specializing in cyanobacterial biotechnology, phycobiliprotein biomanufacturing, nutrient–stress regulation, bioprocess optimization, redox biology, and natural bioactives. Her work combines experimental design, statistical appraisal, and evidence-calibrated interpretation of mechanistic and biological data." theme="cv" action={download} />
     <nav className="cv-section-nav" aria-label="CV sections">{cvSections.map((section) => <a key={section.id} href={`#${section.id}`}><span>{section.number}</span>{section.title}</a>)}</nav>
     <section className="cv-record">{cvSections.map((section) => <article id={section.id} key={section.id}><span>{section.number}</span><div><h2>{section.title}</h2>{section.content}</div></article>)}</section>
