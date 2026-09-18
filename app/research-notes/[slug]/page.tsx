@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Footer } from "../../../components/Footer";
 import { Header } from "../../../components/Header";
 import { researchUpdates } from "../../../lib/site-content-v2";
+import { getSiteUrl } from "../../../lib/site-config";
 
 type NotePageProps = { params: Promise<{ slug: string }> };
 
@@ -24,19 +25,22 @@ export async function generateMetadata({ params }: NotePageProps): Promise<Metad
   return {
     title: note.title,
     description: note.shortSummary,
-    openGraph: { title: `${note.title} — Dr. Elnaz Kyavar`, description: note.shortSummary, images: [] },
-    twitter: { card: "summary", title: `${note.title} — Dr. Elnaz Kyavar`, description: note.shortSummary, images: [] },
+    alternates: { canonical: `/research-notes/${note.slug}` },
+    openGraph: { type: "article", url: `/research-notes/${note.slug}`, title: `${note.title} — Dr. Elnaz Kyavar`, description: note.shortSummary, images: [{ url: "/og.png", width: 1200, height: 630, alt: "Dr. Elnaz Kyavar — Evidence-led bioscience research" }] },
+    twitter: { card: "summary_large_image", title: `${note.title} — Dr. Elnaz Kyavar`, description: note.shortSummary, images: ["/og.png"] },
   };
 }
 
 export default async function ResearchNotePage({ params }: NotePageProps) {
   const note = findNote((await params).slug);
   if (!note) notFound();
+  const schema = { "@context": "https://schema.org", "@type": "Article", headline: note.title, description: note.shortSummary, datePublished: "2026-09-18", dateModified: "2026-09-18", author: { "@type": "Person", "@id": `${getSiteUrl()}/#person`, name: note.author }, mainEntityOfPage: `${getSiteUrl()}/research-notes/${note.slug}`, keywords: note.tags.join(", ") };
 
   return (
     <>
       <Header />
       <main className="research-note-page">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
         <header className="research-note-hero">
           <Link className="research-note-back" href="/research-notes"><span aria-hidden="true">←</span> Research Notes &amp; Updates</Link>
           <div className="research-note-meta"><span>{note.category}</span><time dateTime="2026-09-18">{note.date}</time></div>
@@ -47,7 +51,7 @@ export default async function ResearchNotePage({ params }: NotePageProps) {
         <article className="research-note-article">
           <aside aria-label="Article details">
             <span>Research Note</span>
-            <p>Evidence calibration<br />Mechanistic reasoning<br />Causal inference</p>
+            <p>{note.tags.map((tag) => <span key={tag}>{tag}<br /></span>)}</p>
           </aside>
           <div className="research-note-body">
             {note.fullBody.map((paragraph, index) => (

@@ -17,9 +17,11 @@ Create `.env.local` from `.env.example`. Staging is non-indexed by default. Set 
 
 ## Content architecture
 
-Verified editorial content lives in `lib/site-data.ts`, separate from page presentation. The typed records and slug-based renderer provide a clean boundary for replacing the local source with Sanity queries later. Publication records should not be added until their authorship, title, venue, date, DOI, and external identifiers have been verified.
+Verified editorial content lives in `lib/site-content-v2.ts`; this is the single local fallback source for publications, research notes, talks, projects, and updates. `lib/site-data.ts` contains navigation only. Do not restore older placeholder records there.
 
-Suggested Sanity document types: `person`, `publication`, `project`, `researchNote`, `talk`, `serviceRecord`, `engagement`, and `siteSettings`. Relationships between publications, projects, talks, and research themes should use references rather than duplicated text.
+The Sanity boundary is defined in `lib/sanity.ts`, and document schemas live in `sanity/schemaTypes`. Set the existing project's `NEXT_PUBLIC_SANITY_PROJECT_ID` and dataset to connect it. Local verified records remain available whenever Sanity is unconfigured or temporarily unavailable. Never place confidential manuscript-review information in the CMS.
+
+Production canonical URLs are driven by `NEXT_PUBLIC_SITE_URL`. Indexing and optional analytics remain disabled unless `SITE_ENV=production` is set deliberately.
 
 ## Quality checks
 
@@ -92,7 +94,7 @@ actions tied to the current ChatGPT user. Leave public content anonymous.
 
 - `npm run dev`: start local development
 - `npm run build`: verify the vinext build output
-- `npm test`: build the starter and verify its rendered loading skeleton
+- `pnpm test`: build and verify the academic site
 - `npm run db:generate`: generate Drizzle migrations after schema changes
 
 ## Learn More

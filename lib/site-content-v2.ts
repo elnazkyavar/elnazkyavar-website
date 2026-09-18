@@ -17,6 +17,65 @@ export type ContentPage = {
   closing?: string;
 };
 
+export type Publication = {
+  title: string;
+  slug: string;
+  authors: string[];
+  journal: string;
+  year: number;
+  status: "Published" | "Accepted";
+  articleType: string;
+  doi?: string;
+  externalUrl?: string;
+  summary: string;
+  themes: string[];
+  featured: boolean;
+  publicationDate?: string;
+};
+
+export const publications: Publication[] = [
+  {
+    title: "Process-oriented optimization of phycobiliprotein production in Arthrospira platensis through interaction-driven nutrient–stress regulation",
+    slug: "process-oriented-phycobiliprotein-optimization",
+    authors: ["Elnaz Kyavar", "Neda Soltani", "Sara Saadatmand", "Nariman Mosaffa", "Hadi Tabani"],
+    journal: "Process Biochemistry",
+    year: 2026,
+    status: "Published",
+    articleType: "Original Research",
+    doi: "10.1016/j.procbio.2026.06.005",
+    externalUrl: "https://doi.org/10.1016/j.procbio.2026.06.005",
+    summary: "This study examined nonlinear interactions among salinity, nitrogen availability, and iron concentration in Arthrospira platensis and used response-surface methodology to identify a high-desirability operational window for phycobiliprotein production.",
+    themes: ["cyanobacterial biotechnology", "phycobiliproteins", "nutrient–stress regulation", "process optimization"],
+    featured: true,
+  },
+  {
+    title: "Enhanced recovery of phycobiliproteins from Arthrospira platensis by combined glass bead vortexing and ultrasonication",
+    slug: "enhanced-phycobiliprotein-recovery",
+    authors: ["Elnaz Kyavar", "Neda Soltani", "Sara Saadatmand", "Nariman Mosaffa", "Hadi Tabani"],
+    journal: "Discover Applied Sciences",
+    year: 2026,
+    status: "Published",
+    articleType: "Original Research",
+    doi: "10.1007/s42452-026-09574-1",
+    externalUrl: "https://doi.org/10.1007/s42452-026-09574-1",
+    summary: "A process-oriented study evaluating combined glass bead vortexing and ultrasonication for improved phycobiliprotein recovery from Arthrospira platensis.",
+    themes: ["phycobiliprotein extraction", "downstream processing", "ultrasonication", "process intensification"],
+    featured: true,
+  },
+  {
+    title: "Effects of salinity, iron, and nitrogen on growth, chlorophyll content, and phycobiliproteins, with emphasis on physiological adaptive responses of Spirulina platensis",
+    slug: "salinity-iron-nitrogen-physiological-responses",
+    authors: ["Elnaz Kyavar", "Neda Soltani", "Sara Saadatmand", "Nariman Mosaffa", "Hadi Tabani"],
+    journal: "Journal of Plant Environmental Physiology",
+    year: 2026,
+    status: "Accepted",
+    articleType: "Original Research",
+    summary: "Accepted original research on growth, chlorophyll content, phycobiliproteins, and physiological adaptive responses of Spirulina platensis. Final DOI, volume, issue, pages, and publication date are not yet available.",
+    themes: ["salinity", "iron", "nitrogen", "chlorophyll", "phycobiliproteins", "physiological adaptation"],
+    featured: true,
+  },
+];
+
 export const contentPages: ContentPage[] = [
   {
     slug: "research",
@@ -37,11 +96,13 @@ export const contentPages: ContentPage[] = [
     title: "Publications",
     description: "Verified peer-reviewed and accepted scholarly work by Dr. Elnaz Kyavar.",
     intro: "A curated record of peer-reviewed and accepted scholarly work, with verified bibliographic metadata and direct article links where available.",
-    sections: [
-      { number: "2026", title: "Process-oriented optimization of phycobiliprotein production in Arthrospira platensis through interaction-driven nutrient–stress regulation", body: "This study examined nonlinear interactions among salinity, nitrogen availability, and iron concentration in Arthrospira platensis and used response-surface methodology to identify a high-desirability operational window for phycobiliprotein production.", meta: ["Authors: Elnaz Kyavar, Neda Soltani, Sara Saadatmand, Nariman Mosaffa, Hadi Tabani", "Journal: Process Biochemistry", "Type: Original Research", "Themes: cyanobacterial biotechnology · phycobiliproteins · nutrient–stress regulation · process optimization"], link: { label: "View DOI", href: "https://doi.org/10.1016/j.procbio.2026.06.005" } },
-      { number: "2026", title: "Enhanced recovery of phycobiliproteins from Arthrospira platensis by combined glass bead vortexing and ultrasonication", body: "A process-oriented study evaluating combined glass bead vortexing and ultrasonication for improved phycobiliprotein recovery from Arthrospira platensis.", meta: ["Authors: Elnaz Kyavar, Neda Soltani, Sara Saadatmand, Nariman Mosaffa, Hadi Tabani", "Journal: Discover Applied Sciences", "Type: Original Research", "Themes: phycobiliprotein extraction · downstream processing · ultrasonication · process intensification"], link: { label: "View DOI", href: "https://doi.org/10.1007/s42452-026-09574-1" } },
-      { number: "ACCEPTED", title: "Effects of salinity, iron, and nitrogen on growth, chlorophyll content, and phycobiliproteins, with emphasis on physiological adaptive responses of Spirulina platensis", body: "Accepted for publication. Final volume, issue, and DOI metadata will be added when available.", meta: ["Authors: Elnaz Kyavar, Neda Soltani, Sara Saadatmand, Nariman Mosaffa, Hadi Tabani", "Journal: Journal of Plant Environmental Physiology", "Year: 2026", "Type: Original Research", "Themes: salinity · iron · nitrogen · chlorophyll · phycobiliproteins · physiological adaptation"] },
-    ],
+    sections: publications.map((publication) => ({
+      number: publication.status === "Accepted" ? "ACCEPTED" : String(publication.year),
+      title: publication.title,
+      body: publication.summary,
+      meta: [`Authors: ${publication.authors.join(", ")}`, `Journal: ${publication.journal}`, `Type: ${publication.articleType}`, `Themes: ${publication.themes.join(" · ")}`],
+      link: { label: "View publication", href: `/publications/${publication.slug}` },
+    })),
   },
   {
     slug: "evidence-mechanism",
@@ -152,6 +213,48 @@ export const researchUpdates: ResearchUpdate[] = [
     ],
     tags: ["evidence calibration", "mechanistic reasoning", "causal inference"],
     featuredOnHome: true,
+  },
+  {
+    title: "Expression is not function: why molecular change does not establish mechanistic dependency",
+    slug: "expression-is-not-function",
+    date: "18 September 2026",
+    contentType: "researchNote",
+    category: "Research Note",
+    author: "Dr. Elnaz Kyavar",
+    shortSummary: "Changes in expression, abundance, or localization can support a mechanistic hypothesis, but they do not by themselves establish that a pathway is functionally responsible for a phenotype.",
+    fullBody: [
+      "A biological signal can change dramatically without being the reason a phenotype changes.",
+      "Gene expression, protein abundance, phosphorylation, localization, and pathway-enrichment results can all provide useful evidence that a biological system has responded to an intervention. They may identify candidate pathways, prioritize experiments, or strengthen the plausibility of a proposed explanation. But observation of molecular change is not equivalent to demonstration of functional dependency.",
+      "This distinction becomes important when mechanistic language moves from ‘associated with’ or ‘modulated’ toward stronger claims such as ‘mediates,’ ‘drives,’ or ‘is required for’ an observed effect.",
+      "If a treatment increases the expression of a receptor, for example, the result does not establish that receptor signaling caused the physiological response. Increased abundance may accompany pathway activation, compensate for reduced activity, reflect downstream feedback, or simply occur in parallel with the true causal process.",
+      "Functional evidence asks a different question: what happens to the phenotype when the proposed component is specifically perturbed?",
+      "Inhibition, deletion, knockdown, mutation, pathway blockade, rescue, or carefully designed gain-of-function experiments can move an interpretation beyond molecular association. The strongest designs also test whether the proposed mechanism remains necessary across relevant biological contexts and whether plausible alternative pathways can explain the same observation.",
+      "Expression data therefore remain valuable, but their role should be calibrated correctly. They can support a mechanistic hypothesis. They do not, by themselves, convert that hypothesis into a demonstrated mechanism.",
+      "The scientific question is not only whether a molecule changed. It is whether the biological effect depends on that molecule changing in the way the proposed mechanism requires.",
+    ],
+    tags: ["mechanistic reasoning", "functional validation", "biomarkers"],
+    featuredOnHome: false,
+  },
+  {
+    title: "Why the experimental unit can change the scientific conclusion",
+    slug: "experimental-unit-scientific-conclusion",
+    date: "18 September 2026",
+    contentType: "researchNote",
+    category: "Research Note",
+    author: "Dr. Elnaz Kyavar",
+    shortSummary: "Statistical significance depends not only on the number of measurements collected, but on which observations are biologically independent.",
+    fullBody: [
+      "A dataset may contain hundreds of measurements and still have only a handful of independent experimental units.",
+      "The distinction matters because statistical inference depends on biological independence, not simply on the number of observations recorded by an instrument or generated by repeated measurements.",
+      "Cells from the same culture dish, technical replicates from the same biological sample, multiple fields from the same tissue section, repeated measurements from the same animal, or several organoids derived from one donor may provide valuable information about variability. But they do not automatically represent independent biological replicates.",
+      "When dependent observations are treated as independent samples, the apparent sample size can become artificially inflated. Standard errors may shrink, confidence in the estimated effect may appear stronger than the design supports, and statistical significance may emerge from replication structure rather than from genuine independent evidence.",
+      "The correct experimental unit is therefore determined by the level at which the experimental intervention or biologically meaningful sampling occurs.",
+      "This does not mean that technical or nested measurements should be discarded. They can often be incorporated through averaging, hierarchical models, mixed-effects approaches, or other statistical strategies that preserve their information without pretending they are independent.",
+      "The practical question is simple but powerful: if one biological source were removed, how many genuinely independent sources of evidence would remain?",
+      "Clarifying the experimental unit is not a reporting technicality. It can determine whether an effect is statistically interpretable and, in some cases, whether the central scientific conclusion is supportable at all.",
+    ],
+    tags: ["experimental design", "replication", "pseudoreplication", "statistical inference"],
+    featuredOnHome: false,
   },
   { title: "Enhanced recovery of phycobiliproteins from Arthrospira platensis", slug: "enhanced-phycobiliprotein-recovery", date: "2026", contentType: "newPaper", category: "New Paper", shortSummary: "Combined glass bead vortexing and ultrasonication were evaluated for improved phycobiliprotein recovery from Arthrospira platensis.", externalLink: "https://doi.org/10.1007/s42452-026-09574-1", tags: ["phycobiliproteins", "downstream processing", "process intensification"], featuredOnHome: true },
   { title: "Process-oriented optimization of phycobiliprotein production", slug: "process-oriented-phycobiliprotein-optimization", date: "2026", contentType: "newPaper", category: "New Paper", shortSummary: "Nonlinear salinity, nitrogen, and iron interactions were evaluated to identify a high-desirability operational window for production.", externalLink: "https://doi.org/10.1016/j.procbio.2026.06.005", tags: ["cyanobacterial biotechnology", "nutrient–stress regulation", "process optimization"], featuredOnHome: true },

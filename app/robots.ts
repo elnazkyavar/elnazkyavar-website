@@ -1,2 +1,3 @@
 import type { MetadataRoute } from "next";
-export default function robots(): MetadataRoute.Robots { const isProduction = process.env.SITE_ENV === "production"; return { rules: isProduction ? { userAgent: "*", allow: "/" } : { userAgent: "*", disallow: "/" }, sitemap: isProduction && process.env.NEXT_PUBLIC_SITE_URL ? `${process.env.NEXT_PUBLIC_SITE_URL}/sitemap.xml` : undefined }; }
+import { isProductionSite, productionSiteUrl } from "../lib/site-config";
+export default function robots(): MetadataRoute.Robots { return { rules: isProductionSite ? { userAgent: "*", allow: "/" } : { userAgent: "*", disallow: "/" }, sitemap: isProductionSite && productionSiteUrl ? `${productionSiteUrl}/sitemap.xml` : undefined }; }

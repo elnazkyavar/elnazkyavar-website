@@ -3,7 +3,7 @@ import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { CrossPageNav, InternalHero } from "../../components/InternalPageSystem";
 
-export const metadata: Metadata = { title: "Contact", description: "Research, editorial, and scientific enquiries for Dr. Elnaz Kyavar.", openGraph: { title: "Contact — Dr. Elnaz Kyavar", description: "Research, editorial, and scientific enquiries for Dr. Elnaz Kyavar.", images: [] }, twitter: { title: "Contact — Dr. Elnaz Kyavar", description: "Research, editorial, and scientific enquiries for Dr. Elnaz Kyavar.", images: [] } };
+export const metadata: Metadata = { title: "Contact", description: "Research, editorial, and scientific enquiries for Dr. Elnaz Kyavar.", alternates: { canonical: "/contact" }, openGraph: { title: "Contact — Dr. Elnaz Kyavar", description: "Research, editorial, and scientific enquiries for Dr. Elnaz Kyavar.", url: "/contact", images: [{ url: "/og.png", width: 1200, height: 630 }] }, twitter: { card: "summary_large_image", title: "Contact — Dr. Elnaz Kyavar", description: "Research, editorial, and scientific enquiries for Dr. Elnaz Kyavar.", images: ["/og.png"] } };
 
 const profileLinks = [
   ["ORCID", "https://orcid.org/0009-0008-5526-5360"],

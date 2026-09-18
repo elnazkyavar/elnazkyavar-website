@@ -1,16 +1,10 @@
 import Link from "../components/SiteLink";
 import type { CSSProperties } from "react";
+import Image from "next/image";
 import { Header } from "../components/Header";
 import { ScientificOrbit } from "../components/ScientificOrbit";
 import { researchUpdates } from "../lib/site-content-v2";
-
-const academicProfiles = [
-  { label: "ORCID", icon: "/profile-icons/orcid.svg", href: "https://orcid.org/0009-0008-5526-5360" },
-  { label: "Web of Science", icon: "/profile-icons/web-of-science.svg", href: "https://www.webofscience.com/wos/author/record/OXB-6292-2025" },
-  { label: "Scopus", icon: "/profile-icons/scopus.svg", href: "https://www.scopus.com/authid/detail.uri?authorId=60701658500" },
-  { label: "Google Scholar", icon: "/profile-icons/google-scholar.svg", href: "https://scholar.google.com/citations?user=ltvW04YAAAAJ" },
-  { label: "ResearchGate", icon: "/profile-icons/researchgate.svg", href: "https://www.researchgate.net/profile/Elnaz-Kyavar?ev=hdr_xprf" },
-] as const;
+import { academicProfiles } from "../lib/site-config";
 
 export default function Home() {
   return (
@@ -42,7 +36,7 @@ export default function Home() {
           <aside className="home-v2-portrait" aria-label="Profile portrait of Dr. Elnaz Kyavar">
             <div className="home-v2-photo-shell">
               <span className="photo-orbit photo-orbit-a" aria-hidden="true" />
-              <div className="home-v2-photo" role="img" aria-label="Portrait of Dr. Elnaz Kyavar" />
+              <div className="home-v2-photo"><Image src="/elnaz-home-portrait.jpg" alt="Portrait of Dr. Elnaz Kyavar" fill priority sizes="(max-width: 820px) 150px, (max-width: 1220px) 190px, 24vw" /></div>
             </div>
             <div className="home-v2-portrait-caption">
               <p>Dr. Elnaz Kyavar</p>
