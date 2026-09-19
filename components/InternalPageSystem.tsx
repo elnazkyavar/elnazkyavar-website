@@ -29,6 +29,7 @@ export function ScientificMotif({ theme }: { theme: string }) {
 export function InternalHero({ eyebrow, title, intro, theme, action }: { eyebrow: string; title: string; intro: string; theme: string; action?: React.ReactNode }) {
   return (
     <section className={`internal-hero internal-hero--${theme}`}>
+      {theme === "talks-conferences" && <div className="conference-atmosphere" aria-hidden="true" />}
       <div className="internal-hero-copy">
         <div className="internal-hero-index"><span>{eyebrow}</span><i /><span>{themeLabels[theme] ?? "Research identity"}</span></div>
         <h1>{title}</h1>

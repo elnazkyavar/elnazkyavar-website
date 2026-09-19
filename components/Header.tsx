@@ -66,8 +66,8 @@ export function Header() {
               <Link className="mobile-nav-primary" key={`mobile-${href}`} href={href} aria-current={isCurrent(href) ? "page" : undefined} onClick={closeMenu}>{label}</Link>
             ))}
             <span className="mobile-menu-divider" aria-hidden="true" />
-            {secondary.map(([label, href], index) => (
-              <Link key={href} href={href} aria-current={isCurrent(href) ? "page" : undefined} onClick={closeMenu}><span className="more-panel-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span><span className="more-panel-label">{label}</span></Link>
+            {secondary.map(([label, href]) => (
+              <Link key={href} href={href} aria-current={isCurrent(href) ? "page" : undefined} onClick={closeMenu}><span className="more-panel-label">{label}</span></Link>
             ))}
             <div className="more-panel-footer" aria-hidden="true">Research · Evidence · Service</div>
           </div>
