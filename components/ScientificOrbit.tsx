@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "./SiteLink";
-import { useEffect, useState, type CSSProperties } from "react";
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 
 type OrbitItem = {
   id: string;
@@ -48,14 +48,22 @@ function OrbitIcon({ id }: { id: string }) {
 
 export function ScientificOrbit() {
   const [selected, setSelected] = useState<string | null>(null);
+  const triggerRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+
+  const closeSelected = useCallback(() => {
+    if (!selected) return;
+    const selectedId = selected;
+    setSelected(null);
+    requestAnimationFrame(() => triggerRefs.current[selectedId]?.focus());
+  }, [selected]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setSelected(null);
+      if (event.key === "Escape") closeSelected();
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, []);
+  }, [closeSelected]);
 
   return (
     <section className={`orbit-v2 ${selected ? "has-selection" : ""}`} aria-label="Explore Dr. Elnaz Kyavar's academic work">
@@ -121,18 +129,20 @@ export function ScientificOrbit() {
             key={item.id}
           >
             <button
+              ref={(node) => { triggerRefs.current[item.id] = node; }}
               className="orbit-v2-trigger"
               type="button"
               onClick={() => setSelected(item.id)}
               aria-label={`${item.label}: ${item.description}`}
               aria-expanded={isSelected}
+              aria-controls={`orbit-preview-${item.id}`}
             >
               <OrbitIcon id={item.id} />
               <span>{item.label}</span>
             </button>
 
-            <div className="orbit-v2-expanded" aria-hidden={!isSelected}>
-              <button type="button" className="orbit-v2-close" onClick={() => setSelected(null)} aria-label="Close section preview">×</button>
+            <div id={`orbit-preview-${item.id}`} className="orbit-v2-expanded" aria-hidden={!isSelected}>
+              <button type="button" className="orbit-v2-close" onClick={closeSelected} aria-label="Close section preview">×</button>
               <OrbitIcon id={item.id} />
               <p>Selected area</p>
               <h2>{item.label}</h2>

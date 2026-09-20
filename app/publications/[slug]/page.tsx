@@ -39,7 +39,9 @@ export default async function PublicationPage({ params }: PublicationPageProps) 
     "@context": "https://schema.org",
     "@type": "ScholarlyArticle",
     headline: publication.title,
-    author: publication.authors.map((name) => ({ "@type": "Person", name })),
+    author: publication.authors.map((name) => name === "Elnaz Kyavar"
+      ? { "@type": "Person", "@id": `${getSiteUrl()}/#person`, name }
+      : { "@type": "Person", name }),
     isPartOf: { "@type": "Periodical", name: publication.journal },
     datePublished: publication.publicationDate ?? String(publication.year),
     description: publication.summary,
