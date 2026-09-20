@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "./SiteLink";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef } from "react";
 
 const primary = [
@@ -22,6 +22,7 @@ const secondary = [
 
 export function Header() {
   const pathname = usePathname();
+  const router = useRouter();
   const menuRef = useRef<HTMLDetailsElement>(null);
   const isCurrent = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
   const secondaryIsCurrent = secondary.some(([, href]) => isCurrent(href));
@@ -51,6 +52,10 @@ export function Header() {
     if (menuRef.current) menuRef.current.open = false;
   };
 
+  const prefetchSecondary = () => {
+    secondary.forEach(([, href]) => router.prefetch(href));
+  };
+
   return (
     <header className="site-header">
       <Link className="wordmark" href="/" aria-label="Dr. Elnaz Kyavar, home" aria-current={pathname === "/" ? "page" : undefined}>Dr. Elnaz Kyavar</Link>
@@ -58,8 +63,8 @@ export function Header() {
         {primary.map(([label, href]) => (
           <Link key={href} href={href} aria-current={isCurrent(href) ? "page" : undefined}>{label}</Link>
         ))}
-        <details ref={menuRef} className={`more-nav${secondaryIsCurrent ? " has-current" : ""}`}>
-          <summary><span>More</span><i aria-hidden="true" /></summary>
+        <details ref={menuRef} suppressHydrationWarning className={`more-nav${secondaryIsCurrent ? " has-current" : ""}`}>
+          <summary onPointerEnter={prefetchSecondary} onFocus={prefetchSecondary}><span>More</span><i aria-hidden="true" /></summary>
           <div className="more-panel">
             <div className="more-panel-heading" aria-hidden="true"><span>Explore</span><i /></div>
             {primary.map(([label, href]) => (

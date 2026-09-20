@@ -30,13 +30,22 @@ export function InternalHero({ eyebrow, title, intro, theme, action }: { eyebrow
   return (
     <section className={`internal-hero internal-hero--${theme}`}>
       {theme === "talks-conferences" && <div className="conference-atmosphere" aria-hidden="true" />}
+      {theme === "publications" && <div className="publications-atmosphere" aria-hidden="true" />}
+      {theme === "research-notes" && <div className="research-notes-atmosphere" aria-hidden="true" />}
+      {theme === "projects" && <div className="projects-atmosphere" aria-hidden="true" />}
+      {theme === "research" && <div className="research-atmosphere" aria-hidden="true" />}
+      {theme === "peer-review-editorial-service" && <div className="peer-review-atmosphere" aria-hidden="true" />}
+      {theme === "evidence-mechanism" && <div className="evidence-atmosphere" aria-hidden="true" />}
+      {theme === "professional-engagement" && <div className="professional-engagement-atmosphere" aria-hidden="true" />}
+      {theme === "cv" && <div className="cv-atmosphere" aria-hidden="true" />}
+      {theme === "contact" && <div className="contact-atmosphere" aria-hidden="true" />}
       <div className="internal-hero-copy">
         <div className="internal-hero-index"><span>{eyebrow}</span><i /><span>{themeLabels[theme] ?? "Research identity"}</span></div>
         <h1>{title}</h1>
         <p>{intro}</p>
         {action}
       </div>
-      <ScientificMotif theme={theme} />
+      {theme !== "publications" && theme !== "research-notes" && <ScientificMotif theme={theme} />}
     </section>
   );
 }
