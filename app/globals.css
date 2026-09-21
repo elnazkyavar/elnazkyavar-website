@@ -1411,3 +1411,26 @@ a.home-v2-profile-link:hover { background:rgba(255,255,255,.07); }
   .orbit-v2-rings,
   .orbit-v2-particle { animation:none !important; }
 }
+
+
+/* Restored contextual hero imagery from the audited site build. */
+.conference-atmosphere,.publications-atmosphere,.research-notes-atmosphere,.projects-atmosphere,.research-atmosphere,.peer-review-atmosphere,.evidence-atmosphere,.professional-engagement-atmosphere,.cv-atmosphere,.contact-atmosphere { position:absolute; z-index:0; top:-2%; right:-8%; bottom:-2%; width:min(56vw,780px); opacity:.28; filter:blur(2.5px) saturate(.74) contrast(.96); transform:scale(1.012); transform-origin:center right; -webkit-mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.4) 7%,rgba(0,0,0,.9) 19%,#000 29%,#000 90%,rgba(0,0,0,.76) 95%,transparent 100%),linear-gradient(180deg,transparent 0,rgba(0,0,0,.82) 5%,#000 13%,#000 90%,rgba(0,0,0,.78) 96%,transparent 100%); mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.4) 7%,rgba(0,0,0,.9) 19%,#000 29%,#000 90%,rgba(0,0,0,.76) 95%,transparent 100%),linear-gradient(180deg,transparent 0,rgba(0,0,0,.82) 5%,#000 13%,#000 90%,rgba(0,0,0,.78) 96%,transparent 100%); -webkit-mask-composite:source-in; mask-composite:intersect; pointer-events:none; }
+.conference-atmosphere { background:url("/elnaz-kyavar-conference-speaking.webp") center 42%/cover no-repeat; filter:blur(2.5px) saturate(.84) contrast(.98); }
+.publications-atmosphere { background:url("/elnaz-kyavar-publications-writing.webp") center 42%/cover no-repeat; }
+.research-notes-atmosphere { background:url("/focused_scientist_at_the_microscope.webp") center 42%/cover no-repeat; }
+.projects-atmosphere { background:url("/interior_office_lab_scene_modern_bright_workspace.webp") right 42%/auto 108% no-repeat; }
+.research-atmosphere { background:url("/a_crisp_realistic_modern_laboratory_scene_in_coo.webp") right 42%/auto 108% no-repeat; }
+.peer-review-atmosphere { background:url("/a_clean_modern_realistic_office_academic_workspa.webp") right 42%/auto 108% no-repeat; }
+.evidence-atmosphere { background:url("/a_clean_modern_office_lab_like_scene_photorealis.webp") right 42%/auto 108% no-repeat; }
+.professional-engagement-atmosphere { background:url("/elnaz-kyavar-professional-engagement-meeting.webp") right 42%/auto 108% no-repeat; }
+.cv-atmosphere { background:url("/elnaz-kyavar-cv-portrait.webp") right 42%/auto 108% no-repeat; }
+.contact-atmosphere { background:url("/elnaz-kyavar-contact-portrait.webp") right 42%/auto 108% no-repeat; }
+.internal-hero--contact .internal-motif,.internal-hero--cv .internal-motif,.internal-hero--professional-engagement .internal-motif,.internal-hero--evidence-mechanism .internal-motif,.internal-hero--peer-review-editorial-service .internal-motif,.internal-hero--research .internal-motif,.internal-hero--projects .internal-motif,.internal-hero--talks-conferences .internal-motif { z-index:1; }
+
+@media (max-width:900px) {
+  .conference-atmosphere,.publications-atmosphere,.research-notes-atmosphere,.projects-atmosphere,.research-atmosphere,.peer-review-atmosphere,.evidence-atmosphere,.professional-engagement-atmosphere,.cv-atmosphere,.contact-atmosphere { right:-24%; width:76%; opacity:.09; filter:blur(8px) saturate(.68) contrast(.92); -webkit-mask-image:radial-gradient(ellipse at 76% 48%,#000 0 30%,rgba(0,0,0,.58) 55%,transparent 82%); mask-image:radial-gradient(ellipse at 76% 48%,#000 0 30%,rgba(0,0,0,.58) 55%,transparent 82%); }
+  .conference-atmosphere { opacity:.07; filter:blur(11px) saturate(.72) contrast(.91); }
+}
+@media (max-width:560px) {
+  .conference-atmosphere,.publications-atmosphere,.research-notes-atmosphere,.projects-atmosphere,.research-atmosphere,.peer-review-atmosphere,.evidence-atmosphere,.professional-engagement-atmosphere,.cv-atmosphere,.contact-atmosphere { display:none; }
+}
