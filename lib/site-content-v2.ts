@@ -192,6 +192,7 @@ export type ResearchUpdate = {
   externalLink?: string;
   tags: string[];
   featuredOnHome: boolean;
+  video?: { src: string; duration?: string; title?: string };
 };
 
 export const researchUpdates: ResearchUpdate[] = [
@@ -218,48 +219,37 @@ export const researchUpdates: ResearchUpdate[] = [
     featuredOnHome: true,
   },
   {
-    title: "Expression is not function: why molecular change does not establish mechanistic dependency",
-    slug: "expression-is-not-function",
-    date: "18 September 2026",
-    dateIso: "2026-09-18",
+    title: "What would change the conclusion?",
+    slug: "what-would-change-the-conclusion",
+    date: "21 September 2026",
+    dateIso: "2026-09-21",
     contentType: "researchNote",
     category: "Research Note",
     author: "Dr. Elnaz Kyavar",
-    shortSummary: "Changes in expression, abundance, or localization can support a mechanistic hypothesis, but they do not by themselves establish that a pathway is functionally responsible for a phenotype.",
+    shortSummary: "Scientific conclusions depend not only on evidence, but on assumptions and inferential choices. Identifying what could materially revise a conclusion reveals which parts of an argument are genuinely load-bearing.",
     fullBody: [
-      "A biological signal can change dramatically without being the reason a phenotype changes.",
-      "Gene expression, protein abundance, phosphorylation, localization, and pathway-enrichment results can all provide useful evidence that a biological system has responded to an intervention. They may identify candidate pathways, prioritize experiments, or strengthen the plausibility of a proposed explanation. But observation of molecular change is not equivalent to demonstration of functional dependency.",
-      "This distinction becomes important when mechanistic language moves from ‘associated with’ or ‘modulated’ toward stronger claims such as ‘mediates,’ ‘drives,’ or ‘is required for’ an observed effect.",
-      "If a treatment increases the expression of a receptor, for example, the result does not establish that receptor signaling caused the physiological response. Increased abundance may accompany pathway activation, compensate for reduced activity, reflect downstream feedback, or simply occur in parallel with the true causal process.",
-      "Functional evidence asks a different question: what happens to the phenotype when the proposed component is specifically perturbed?",
-      "Inhibition, deletion, knockdown, mutation, pathway blockade, rescue, or carefully designed gain-of-function experiments can move an interpretation beyond molecular association. The strongest designs also test whether the proposed mechanism remains necessary across relevant biological contexts and whether plausible alternative pathways can explain the same observation.",
-      "Expression data therefore remain valuable, but their role should be calibrated correctly. They can support a mechanistic hypothesis. They do not, by themselves, convert that hypothesis into a demonstrated mechanism.",
-      "The scientific question is not only whether a molecule changed. It is whether the biological effect depends on that molecule changing in the way the proposed mechanism requires.",
+      "Scientific conclusions rarely depend on a single observation. They emerge from a chain of evidence, assumptions, analytical choices, and inference. A result can therefore appear convincing while still depending heavily on one or two conditions that carry much of the interpretive weight.",
+      "A useful way to evaluate a conclusion is to reverse the usual question. Instead of asking only what evidence supports an interpretation, ask: what would have to be different for the interpretation no longer to hold?",
+      "This question is not an invitation to manufacture doubt. It is a way of identifying the structure of an argument.",
+      "Some assumptions are relatively inconsequential. Changing them would alter a numerical estimate or the precision of an analysis without materially changing the scientific interpretation. Others are load-bearing: the conclusion depends on them being sufficiently valid. The distinction matters because an argument supported by many observations can still be fragile if those observations ultimately depend on the same critical assumption.",
+      "Consider experimental independence. A dataset may contain a large number of measurements, but if those measurements originate from only a few biologically independent sources, treating every observation as an independent replicate can substantially change the apparent strength of the evidence. The important sensitivity test is therefore not simply whether the dataset is large, but whether the conclusion persists when the correct experimental unit is used.",
+      "The same logic applies to mechanistic interpretation. A treatment may alter the expression of a receptor, protein, or pathway marker while also changing the phenotype of interest. That combination strengthens an association, but a causal interpretation still depends on an additional assumption: that the altered component is functionally responsible for the observed effect. If blocking or removing that component leaves the phenotype essentially unchanged, the original mechanistic conclusion requires revision even though the expression data themselves remain valid.",
+      "Analytical choices can also be load-bearing. Alternative model specifications, plausible definitions of an outcome, treatment of repeated measurements, adjustment for relevant confounders, or correction for multiple comparisons may leave a conclusion largely unchanged—or expose that it depended strongly on one analytical pathway. Sensitivity to such choices does not automatically invalidate a result. It tells us how conditional the inference is.",
+      "This is why robustness should not be reduced to obtaining the same P value repeatedly. A conclusion can remain scientifically coherent even when an effect estimate changes in magnitude or crosses an arbitrary significance threshold. Conversely, apparently consistent statistical significance does not guarantee that the underlying biological interpretation is robust. The relevant question is whether reasonable changes to assumptions, models, controls, or experimental conditions alter the substantive claim being made.",
+      "For mechanistic claims, the most informative challenges are often experimental rather than statistical. Does the proposed mechanism survive targeted perturbation? Is the effect lost when the proposed mediator is disrupted? Can it be restored through rescue? Can competing explanations account for the same observations? Evidence that discriminates among alternative explanations carries more inferential value than simply accumulating additional measurements compatible with the preferred one.",
+      "Importantly, asking what would change a conclusion does not mean that every scientific claim must be vulnerable to a single decisive experiment. Biological systems are complex, measurements are imperfect, and evidence often accumulates across different models and levels of organization. Conclusions may therefore be revised gradually rather than overturned by one observation.",
+      "But a scientific interpretation should still expose the conditions under which confidence in it would decrease.",
+      "If no plausible observation, perturbation, reanalysis, or contradictory evidence could ever modify a conclusion, the problem is no longer simply the amount of evidence available. The claim has become insulated from empirical challenge.",
+      "A strong conclusion is therefore not one that appears impossible to question. It is one whose evidential dependencies are visible: we know what supports it, which assumptions matter most, what alternative explanations remain, and what future evidence would strengthen, weaken, or revise it.",
+      "Before asking how strongly a dataset supports a conclusion, it is worth asking a more revealing question: what would change the conclusion?"
     ],
-    tags: ["mechanistic reasoning", "functional validation", "biomarkers"],
+    tags: ["scientific inference", "robustness", "sensitivity analysis", "mechanistic reasoning"],
     featuredOnHome: false,
-  },
-  {
-    title: "Why the experimental unit can change the scientific conclusion",
-    slug: "experimental-unit-scientific-conclusion",
-    date: "18 September 2026",
-    dateIso: "2026-09-18",
-    contentType: "researchNote",
-    category: "Research Note",
-    author: "Dr. Elnaz Kyavar",
-    shortSummary: "Statistical significance depends not only on the number of measurements collected, but on which observations are biologically independent.",
-    fullBody: [
-      "A dataset may contain hundreds of measurements and still have only a handful of independent experimental units.",
-      "The distinction matters because statistical inference depends on biological independence, not simply on the number of observations recorded by an instrument or generated by repeated measurements.",
-      "Cells from the same culture dish, technical replicates from the same biological sample, multiple fields from the same tissue section, repeated measurements from the same animal, or several organoids derived from one donor may provide valuable information about variability. But they do not automatically represent independent biological replicates.",
-      "When dependent observations are treated as independent samples, the apparent sample size can become artificially inflated. Standard errors may shrink, confidence in the estimated effect may appear stronger than the design supports, and statistical significance may emerge from replication structure rather than from genuine independent evidence.",
-      "The correct experimental unit is therefore determined by the level at which the experimental intervention or biologically meaningful sampling occurs.",
-      "This does not mean that technical or nested measurements should be discarded. They can often be incorporated through averaging, hierarchical models, mixed-effects approaches, or other statistical strategies that preserve their information without pretending they are independent.",
-      "The practical question is simple but powerful: if one biological source were removed, how many genuinely independent sources of evidence would remain?",
-      "Clarifying the experimental unit is not a reporting technicality. It can determine whether an effect is statistically interpretable and, in some cases, whether the central scientific conclusion is supportable at all.",
-    ],
-    tags: ["experimental design", "replication", "pseudoreplication", "statistical inference"],
-    featuredOnHome: false,
+    video: {
+      src: "https://resource2.heygen.ai/aws_pacific/avatar_tmp/a54c0f31091a4d8f9c6d7160453a5a66/v60212362c8fc457d8ac2ce06aad38f88/caption_54d1c0b84ac043c1a0c69a00241b28f5.mp4",
+      duration: "46 sec",
+      title: "What would change the conclusion? — companion video"
+    }
   },
   { title: "Enhanced recovery of phycobiliproteins from Arthrospira platensis", slug: "enhanced-phycobiliprotein-recovery", date: "2026", contentType: "newPaper", category: "New Paper", shortSummary: "Combined glass bead vortexing and ultrasonication were evaluated for improved phycobiliprotein recovery from Arthrospira platensis.", externalLink: "https://doi.org/10.1007/s42452-026-09574-1", tags: ["phycobiliproteins", "downstream processing", "process intensification"], featuredOnHome: true },
   { title: "Process-oriented optimization of phycobiliprotein production", slug: "process-oriented-phycobiliprotein-optimization", date: "2026", contentType: "newPaper", category: "New Paper", shortSummary: "Nonlinear salinity, nitrogen, and iron interactions were evaluated to identify a high-desirability operational window for production.", externalLink: "https://doi.org/10.1016/j.procbio.2026.06.005", tags: ["cyanobacterial biotechnology", "nutrient–stress regulation", "process optimization"], featuredOnHome: true },
