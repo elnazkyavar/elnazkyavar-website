@@ -21,7 +21,7 @@ export function ResearchNotesIndex({ intro, researchUpdates }: { intro: string; 
             <article className="original-note-card" key={note.slug}>
               <div className="original-note-index"><span>{String(index + 1).padStart(2, "0")}</span><i /></div>
               <div className="original-note-content">
-                <div className="original-note-meta"><span>{note.category}</span><time dateTime={note.dateIso}>{note.date}</time></div>
+                <div className="original-note-meta"><span>{note.category}</span><time dateTime={note.dateIso}>{note.date}</time>{note.video ? <span className="original-note-video-badge">Video · {note.video.duration ?? "short"}</span> : null}</div>
                 <h3>{note.title}</h3>
                 <p>{note.shortSummary}</p>
                 <div className="original-note-footer">
