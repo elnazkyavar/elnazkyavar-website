@@ -49,6 +49,22 @@ export default async function ResearchNotePage({ params }: NotePageProps) {
           <p>{note.shortSummary}</p>
         </header>
 
+        {note.video ? (
+          <section className="research-note-video" aria-labelledby="companion-video-title">
+            <div className="research-note-video-copy">
+              <span>Companion video · {note.video.duration ?? "Short explainer"}</span>
+              <h2 id="companion-video-title">Watch the argument in motion.</h2>
+              <p>A concise visual companion to the research note. The written note remains the complete, citable version of the argument.</p>
+            </div>
+            <div className="research-note-video-frame">
+              <video controls playsInline preload="metadata" aria-label={note.video.title ?? note.title}>
+                <source src={note.video.src} type="video/mp4" />
+                Your browser does not support embedded video.
+              </video>
+            </div>
+          </section>
+        ) : null}
+
         <article className="research-note-article">
           <aside aria-label="Article details">
             <span>Research Note</span>
