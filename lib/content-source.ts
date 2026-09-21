@@ -37,6 +37,7 @@ export async function getResearchUpdates(): Promise<ResearchUpdate[]> {
     title: note.title!, slug: note.slug!, date: displayDate(note.date), dateIso: note.date!, modifiedDateIso: note.updatedAt?.slice(0, 10),
     contentType: "researchNote", category: "Research Note", author: note.author ?? "Dr. Elnaz Kyavar", shortSummary: note.excerpt!,
     fullBody: bodyToParagraphs(note.body), tags: note.tags ?? [], featuredOnHome: Boolean(note.featuredOnHome),
+    video: localUpdates.find((local) => local.slug === note.slug)?.video,
   }));
   const typeByCategory: Record<string, ResearchUpdate["contentType"]> = { "New Paper": "newPaper", "Accepted Paper": "acceptedPaper", "Conference Update": "conferenceUpdate", "Professional Update": "professionalUpdate" };
   const mappedUpdates: ResearchUpdate[] = updates.filter((update) => update.title && update.category && (update.date || update.dateLabel) && update.summary).map((update) => ({
