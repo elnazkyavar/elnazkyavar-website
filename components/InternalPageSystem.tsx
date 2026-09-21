@@ -29,7 +29,31 @@ export function ScientificMotif({ theme }: { theme: string }) {
 export function InternalHero({ eyebrow, title, intro, theme, action }: { eyebrow: string; title: string; intro: string; theme: string; action?: React.ReactNode }) {
   return (
     <section className={`internal-hero internal-hero--${theme}`}>
-      {theme === "talks-conferences" && <div className="conference-atmosphere" aria-hidden="true" />}
+      {({
+        "talks-conferences": "conference-atmosphere",
+        publications: "publications-atmosphere",
+        "research-notes": "research-notes-atmosphere",
+        projects: "projects-atmosphere",
+        research: "research-atmosphere",
+        "peer-review-editorial-service": "peer-review-atmosphere",
+        "evidence-mechanism": "evidence-atmosphere",
+        "professional-engagement": "professional-engagement-atmosphere",
+        cv: "cv-atmosphere",
+        contact: "contact-atmosphere",
+      } as Record<string, string>)[theme] && (
+        <div className={({
+          "talks-conferences": "conference-atmosphere",
+          publications: "publications-atmosphere",
+          "research-notes": "research-notes-atmosphere",
+          projects: "projects-atmosphere",
+          research: "research-atmosphere",
+          "peer-review-editorial-service": "peer-review-atmosphere",
+          "evidence-mechanism": "evidence-atmosphere",
+          "professional-engagement": "professional-engagement-atmosphere",
+          cv: "cv-atmosphere",
+          contact: "contact-atmosphere",
+        } as Record<string, string>)[theme]} aria-hidden="true" />
+      )}
       <div className="internal-hero-copy">
         <div className="internal-hero-index"><span>{eyebrow}</span><i /><span>{themeLabels[theme] ?? "Research identity"}</span></div>
         <h1>{title}</h1>
