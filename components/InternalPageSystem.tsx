@@ -108,6 +108,19 @@ export function InternalContentPage({ page }: { page: ContentPage }) {
   return (
     <main className={`internal-page internal-page--${page.slug}`}>
       <InternalHero eyebrow={page.eyebrow} title={page.title} intro={page.intro} theme={page.slug} />
+      {page.slug === "peer-review-editorial-service" && (
+        <section className="internal-sections" aria-label="Verified peer-review record">
+          <article className="internal-section">
+            <div className="internal-section-rail"><span>WOS</span><i /></div>
+            <div className="internal-section-content">
+              <div className="internal-section-heading"><h2>Verified Peer-Review Record</h2></div>
+              <p>Explore my publicly documented peer-review contributions through my Web of Science Researcher Profile.</p>
+              <a className="internal-section-link" href="https://www.webofscience.com/wos/author/record/OXB-6292-2025" target="_blank" rel="noopener noreferrer">View Web of Science Record <span aria-hidden="true">↗</span></a>
+            </div>
+            <div className="internal-section-geometry" aria-hidden="true"><i /><i /><i /></div>
+          </article>
+        </section>
+      )}
       {page.slug === "evidence-mechanism" && <EvidencePathway />}
       <section className="internal-sections" aria-label={`${page.title} sections`}>
         {page.sections.map((section) => {
