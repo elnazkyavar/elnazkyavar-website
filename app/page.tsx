@@ -129,7 +129,7 @@ export default async function Home() {
             <p>Academic profiles</p>
             <h2>Follow the research record.</h2>
           </div>
-          <a className="home-v2-latest-all" href="https://orcid.org/0009-0008-5526-5360" target="_blank" rel="noopener noreferrer" aria-label="View Dr. Elnaz Kyavar’s ORCID research identity">View ORCID Record <span aria-hidden="true">↗</span></a>
+          <span>Verified personal profile links.</span>
         </div>
 
         <nav className="home-v2-profile-grid" aria-label="Academic profile links">
