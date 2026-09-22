@@ -35,7 +35,8 @@ export async function generateMetadata({ params }: NotePageProps): Promise<Metad
 export default async function ResearchNotePage({ params }: NotePageProps) {
   const note = await findNote((await params).slug);
   if (!note) notFound();
-  const schema = { "@context": "https://schema.org", "@type": "Article", headline: note.title, description: note.shortSummary, datePublished: note.dateIso, dateModified: note.modifiedDateIso ?? note.dateIso, author: { "@type": "Person", "@id": `${getSiteUrl()}/#person`, name: note.author }, mainEntityOfPage: `${getSiteUrl()}/research-notes/${note.slug}`, keywords: note.tags.join(", ") };
+  const canonical = `${getSiteUrl()}/research-notes/${note.slug}`;
+  const schema = { "@context": "https://schema.org", "@type": "Article", "@id": `${canonical}#article`, headline: note.title, description: note.shortSummary, datePublished: note.dateIso, dateModified: note.modifiedDateIso ?? note.dateIso, author: { "@type": "Person", "@id": `${getSiteUrl()}/#person`, name: note.author }, url: canonical, mainEntityOfPage: { "@type": "WebPage", "@id": canonical }, keywords: note.tags.join(", ") };
 
   return (
     <>
