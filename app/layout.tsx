@@ -31,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const baseUrl = getSiteUrl();
-  const personSchema = { "@context": "https://schema.org", "@type": "Person", "@id": `${baseUrl}/#person`, name: "Dr. Elnaz Kyavar", url: baseUrl, jobTitle: "Plant Physiologist and Biotechnology Researcher", affiliation: [{ "@type": "CollegeOrUniversity", name: "Islamic Azad University, Science and Research Branch" }, { "@type": "Organization", name: "Green Life ELK" }], sameAs: academicProfiles.map((profile) => profile.href), knowsAbout: ["Cyanobacterial biotechnology", "Phycobiliproteins", "Bioprocessing", "Redox biology", "Mechanistic phytomedicine"] };
+  const personSchema = { "@context": "https://schema.org", "@type": "Person", "@id": `${baseUrl}/#person`, name: "Dr. Elnaz Kyavar", url: baseUrl, jobTitle: "Plant Physiologist and Biotechnology Researcher", affiliation: [{ "@type": "CollegeOrUniversity", name: "Islamic Azad University, Science and Research Branch" }, { "@type": "Organization", name: "Green Life ELK Co., Ltd." }], sameAs: academicProfiles.map((profile) => profile.href), knowsAbout: ["Cyanobacterial biotechnology", "Phycobiliproteins", "Bioprocessing", "Redox biology", "Mechanistic phytomedicine"] };
   return (
     <html lang="en">
       <body className={`${sans.variable} ${serif.variable}`}><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} />{children}<ProductionAnalytics /></body>
