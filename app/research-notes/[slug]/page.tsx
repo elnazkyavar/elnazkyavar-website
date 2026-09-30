@@ -81,7 +81,6 @@ export default async function ResearchNotePage({ params }: NotePageProps) {
         uploadDate: note.dateIso,
         ...(videoDuration ? { duration: videoDuration } : {}),
         contentUrl: videoContentUrl,
-        embedUrl: canonical,
         url: canonical,
         creator: { "@type": "Person", "@id": `${getSiteUrl()}/#person`, name: note.author ?? "Dr. Elnaz Kyavar" },
         mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
