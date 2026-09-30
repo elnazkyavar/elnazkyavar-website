@@ -20,7 +20,7 @@ export const researchNote03: ResearchUpdate = {
   tags: ["mechanistic evidence", "functional dependency", "FXR", "causal inference", "evidence calibration"],
   featuredOnHome: true,
   video: {
-    src: "/media/research-note-03-final.mp4",
+    src: "/videos/Research_Note_03_Expression_Is_Not_Function_FINAL_v3_compatible.mp4",
     duration: "60 sec",
     title: "Expression is not function — Research Note 03"
   }
