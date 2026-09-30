@@ -3,7 +3,6 @@ import Link from "../../../components/SiteLink";
 import { notFound } from "next/navigation";
 import { Footer } from "../../../components/Footer";
 import { Header } from "../../../components/Header";
-import { researchUpdates } from "../../../lib/site-content-v2";
 import { getResearchUpdates } from "../../../lib/content-source";
 import { getSiteUrl } from "../../../lib/site-config";
 
@@ -27,8 +26,8 @@ function isoDuration(value?: string) {
   return undefined;
 }
 
-export function generateStaticParams() {
-  return researchUpdates
+export async function generateStaticParams() {
+  return (await getResearchUpdates())
     .filter((entry) => entry.contentType === "researchNote" && entry.fullBody)
     .map(({ slug }) => ({ slug }));
 }
