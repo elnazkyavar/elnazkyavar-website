@@ -131,8 +131,6 @@ export function ScientificOrbit() {
               <span>{item.label}</span>
             </button>
 
-            <span className="orbit-v2-hover-copy" aria-hidden="true">{item.description}</span>
-
             <div className="orbit-v2-expanded" aria-hidden={!isSelected}>
               <button type="button" className="orbit-v2-close" onClick={() => setSelected(null)} aria-label="Close section preview">×</button>
               <OrbitIcon id={item.id} />

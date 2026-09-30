@@ -1,4 +1,5 @@
 import { contentPages, publications as localPublications, researchUpdates as localUpdates, type ContentPage, type Publication, type ResearchUpdate } from "./site-content-v2";
+import { researchNote03 } from "./research-note-03";
 import { querySanity, sanityConfigured } from "./sanity";
 
 type PortableBlock = { _type?: string; children?: { text?: string }[] };
@@ -12,6 +13,8 @@ type SanityUpdate = {
 };
 type SanityTalk = { title?: string; role?: string; eventName?: string; date?: string; dateLabel?: string; location?: string; status?: string; externalOfficialUrl?: string; summary?: string };
 type SanityProject = { title?: string; projectType?: string; status?: string; summary?: string; venueOrPublisher?: string; relatedThemes?: string[] };
+
+const localResearchUpdates: ResearchUpdate[] = [researchNote03, ...localUpdates.filter((item) => item.slug !== researchNote03.slug)];
 
 function displayDate(iso?: string) {
   if (!iso) return "";
@@ -28,7 +31,7 @@ export async function getPublications(): Promise<Publication[]> {
 }
 
 export async function getResearchUpdates(): Promise<ResearchUpdate[]> {
-  if (!sanityConfigured) return localUpdates;
+  if (!sanityConfigured) return localResearchUpdates;
   const [notes, updates] = await Promise.all([
     querySanity<SanityResearchNote[]>(`*[_type == "researchNote"] | order(displayOrder asc, date desc){title,"slug":slug.current,author,date,"updatedAt":_updatedAt,excerpt,body,tags,featuredOnHome}`, []),
     querySanity<SanityUpdate[]>(`*[_type == "professionalUpdate"] | order(displayOrder asc, coalesce(date, dateLabel) desc){category,title,"slug":coalesce(slug.current,relatedPublication->slug.current,relatedProject->slug.current,relatedTalk->slug.current),date,dateLabel,"summary":summary,"externalLink":coalesce(externalLink,relatedPublication->externalUrl,relatedTalk->externalOfficialUrl),featuredOnHome,"tags":coalesce(tags,relatedPublication->researchThemes,relatedProject->relatedThemes,[])}`, []),
@@ -37,7 +40,7 @@ export async function getResearchUpdates(): Promise<ResearchUpdate[]> {
     title: note.title!, slug: note.slug!, date: displayDate(note.date), dateIso: note.date!, modifiedDateIso: note.updatedAt?.slice(0, 10),
     contentType: "researchNote", category: "Research Note", author: note.author ?? "Dr. Elnaz Kyavar", shortSummary: note.excerpt!,
     fullBody: bodyToParagraphs(note.body), tags: note.tags ?? [], featuredOnHome: Boolean(note.featuredOnHome),
-    video: localUpdates.find((local) => local.slug === note.slug)?.video,
+    video: localResearchUpdates.find((local) => local.slug === note.slug)?.video,
   }));
   const typeByCategory: Record<string, ResearchUpdate["contentType"]> = { "New Paper": "newPaper", "Accepted Paper": "acceptedPaper", "Conference Update": "conferenceUpdate", "Professional Update": "professionalUpdate" };
   const mappedUpdates: ResearchUpdate[] = updates.filter((update) => update.title && update.category && (update.date || update.dateLabel) && update.summary).map((update) => ({
@@ -45,8 +48,8 @@ export async function getResearchUpdates(): Promise<ResearchUpdate[]> {
     date: update.dateLabel ?? displayDate(update.date), dateIso: update.date, contentType: typeByCategory[update.category!] ?? "professionalUpdate", category: update.category!,
     shortSummary: update.summary!, externalLink: update.externalLink, tags: update.tags ?? [], featuredOnHome: Boolean(update.featuredOnHome),
   }));
-  const combined = [...mappedNotes, ...mappedUpdates];
-  return combined.length ? combined : localUpdates;
+  const combined = [researchNote03, ...mappedNotes.filter((item) => item.slug !== researchNote03.slug), ...mappedUpdates];
+  return combined.length ? combined : localResearchUpdates;
 }
 
 export async function getContentPage(slug: string): Promise<ContentPage | undefined> {

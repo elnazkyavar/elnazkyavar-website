@@ -217,6 +217,11 @@ export const researchUpdates: ResearchUpdate[] = [
     ],
     tags: ["evidence calibration", "mechanistic reasoning", "causal inference"],
     featuredOnHome: true,
+    video: {
+      src: "/videos/research-note-01-final.mp4",
+      duration: "49 sec",
+      title: "From association to mechanism — companion video"
+    },
   },
   {
     title: "What would change the conclusion?",
@@ -246,8 +251,8 @@ export const researchUpdates: ResearchUpdate[] = [
     tags: ["scientific inference", "robustness", "sensitivity analysis", "mechanistic reasoning"],
     featuredOnHome: false,
     video: {
-      src: "https://resource2.heygen.ai/aws_pacific/avatar_tmp/a54c0f31091a4d8f9c6d7160453a5a66/v60212362c8fc457d8ac2ce06aad38f88/caption_54d1c0b84ac043c1a0c69a00241b28f5.mp4",
-      duration: "46 sec",
+      src: "/videos/research-note-02-final.mp4",
+      duration: "51 sec",
       title: "What would change the conclusion? — companion video"
     }
   },

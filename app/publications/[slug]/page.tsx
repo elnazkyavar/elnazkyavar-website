@@ -39,12 +39,15 @@ export default async function PublicationPage({ params }: PublicationPageProps) 
     "@context": "https://schema.org",
     "@type": "ScholarlyArticle",
     headline: publication.title,
-    author: publication.authors.map((name) => ({ "@type": "Person", name })),
+    author: publication.authors.map((name, index) => index === 0
+      ? { "@type": "Person", "@id": `${getSiteUrl()}/#person`, name }
+      : { "@type": "Person", name }),
     isPartOf: { "@type": "Periodical", name: publication.journal },
     datePublished: publication.publicationDate ?? String(publication.year),
     description: publication.summary,
     keywords: publication.themes.join(", "),
     url: canonical,
+    mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
     ...(publication.doi ? { identifier: `https://doi.org/${publication.doi}`, sameAs: publication.externalUrl } : {}),
   };
   return <>
