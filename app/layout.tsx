@@ -31,13 +31,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     name: "Dr. Elnaz Kyavar",
     givenName: "Elnaz",
     familyName: "Kyavar",
+    alternateName: ["Elnaz Kiavar", "الناز کیاور"],
     url: baseUrl,
     image: `${baseUrl}/elnaz-home-portrait.jpg`,
     jobTitle: "Plant Physiologist and Biotechnology Researcher",
-    affiliation: {
-      "@type": "CollegeOrUniversity",
-      name: "Islamic Azad University, Science and Research Branch",
-    },
+    affiliation: [
+      { "@type": "CollegeOrUniversity", name: "Islamic Azad University, Science and Research Branch" },
+      { "@type": "Organization", name: "Green Life ELK Co., Ltd." },
+    ],
     identifier: [
       {
         "@type": "PropertyValue",
