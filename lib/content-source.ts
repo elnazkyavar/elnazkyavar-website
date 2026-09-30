@@ -14,7 +14,7 @@ type SanityUpdate = {
 type SanityTalk = { title?: string; role?: string; eventName?: string; date?: string; dateLabel?: string; location?: string; status?: string; externalOfficialUrl?: string; summary?: string };
 type SanityProject = { title?: string; projectType?: string; status?: string; summary?: string; venueOrPublisher?: string; relatedThemes?: string[] };
 
-const localResearchUpdates: ResearchUpdate[] = [researchNote03, ...localUpdates.filter((item) => item.slug !== researchNote03.slug)];
+const localResearchUpdates: ResearchUpdate[] = [...localUpdates.filter((item) => item.slug !== researchNote03.slug), researchNote03];
 
 function displayDate(iso?: string) {
   if (!iso) return "";
@@ -48,7 +48,7 @@ export async function getResearchUpdates(): Promise<ResearchUpdate[]> {
     date: update.dateLabel ?? displayDate(update.date), dateIso: update.date, contentType: typeByCategory[update.category!] ?? "professionalUpdate", category: update.category!,
     shortSummary: update.summary!, externalLink: update.externalLink, tags: update.tags ?? [], featuredOnHome: Boolean(update.featuredOnHome),
   }));
-  const combined = [researchNote03, ...mappedNotes.filter((item) => item.slug !== researchNote03.slug), ...mappedUpdates];
+  const combined = [...mappedNotes.filter((item) => item.slug !== researchNote03.slug), researchNote03, ...mappedUpdates];
   return combined.length ? combined : localResearchUpdates;
 }
 
