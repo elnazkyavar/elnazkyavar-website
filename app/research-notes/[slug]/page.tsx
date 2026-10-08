@@ -17,6 +17,13 @@ function absoluteUrl(value: string) {
   return `${getSiteUrl()}${value.startsWith("/") ? value : `/${value}`}`;
 }
 
+function videoUploadDate(dateIso: string) {
+  // Google VideoObject expects a timezone when uploadDate is supplied as a datetime.
+  // Research Notes are published from Tehran (UTC+03:30).
+  if (/^\d{4}-\d{2}-\d{2}$/.test(dateIso)) return `${dateIso}T00:00:00+03:30`;
+  return dateIso;
+}
+
 function isoDuration(value?: string) {
   if (!value) return undefined;
   const seconds = value.match(/(\d+)\s*(?:sec|second|seconds|s)\b/i)?.[1];
@@ -77,7 +84,7 @@ export default async function ResearchNotePage({ params }: NotePageProps) {
         name: note.video.title ?? note.title,
         description: note.shortSummary,
         thumbnailUrl: [`${getSiteUrl()}/og.png`],
-        uploadDate: note.dateIso,
+        uploadDate: videoUploadDate(note.dateIso),
         ...(videoDuration ? { duration: videoDuration } : {}),
         contentUrl: videoContentUrl,
         url: canonical,
