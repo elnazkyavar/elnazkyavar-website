@@ -1,5 +1,6 @@
 import { contentPages, publications as localPublications, researchUpdates as localUpdates, type ContentPage, type Publication, type ResearchUpdate } from "./site-content-v2";
 import { researchNote03 } from "./research-note-03";
+import { researchNote04 } from "./research-note-04";
 import { querySanity, sanityConfigured } from "./sanity";
 
 type PortableBlock = { _type?: string; children?: { text?: string }[] };
@@ -14,7 +15,7 @@ type SanityUpdate = {
 type SanityTalk = { title?: string; role?: string; eventName?: string; date?: string; dateLabel?: string; location?: string; status?: string; externalOfficialUrl?: string; summary?: string };
 type SanityProject = { title?: string; projectType?: string; status?: string; summary?: string; venueOrPublisher?: string; relatedThemes?: string[] };
 
-const localResearchUpdates: ResearchUpdate[] = [...localUpdates.filter((item) => item.slug !== researchNote03.slug), researchNote03];
+const localResearchUpdates: ResearchUpdate[] = [...localUpdates.filter((item) => item.slug !== researchNote03.slug && item.slug !== researchNote04.slug), researchNote03, researchNote04];
 
 function displayDate(iso?: string) {
   if (!iso) return "";
@@ -48,7 +49,7 @@ export async function getResearchUpdates(): Promise<ResearchUpdate[]> {
     date: update.dateLabel ?? displayDate(update.date), dateIso: update.date, contentType: typeByCategory[update.category!] ?? "professionalUpdate", category: update.category!,
     shortSummary: update.summary!, externalLink: update.externalLink, tags: update.tags ?? [], featuredOnHome: Boolean(update.featuredOnHome),
   }));
-  const combined = [...mappedNotes.filter((item) => item.slug !== researchNote03.slug), researchNote03, ...mappedUpdates];
+  const combined = [...mappedNotes.filter((item) => item.slug !== researchNote03.slug && item.slug !== researchNote04.slug), researchNote03, researchNote04, ...mappedUpdates];
   return combined.length ? combined : localResearchUpdates;
 }
 
