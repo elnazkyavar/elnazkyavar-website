@@ -24,7 +24,7 @@ export const researchNote04: ResearchUpdate = {
   tags: ["mediation", "causal inference", "mechanistic evidence", "microbiota–bile acid signaling", "evidence calibration"],
   featuredOnHome: true,
   video: {
-    src: "/videos/Research_Note_04_Mediation_FINAL.mp4",
+    src: "/videos/RN04_FINAL_COMPLETE_WITH_LOGO_MUSIC.mp4",
     duration: "78 sec",
     title: "A changed mediator is not evidence of mediation — Research Note 04"
   }
