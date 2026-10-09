@@ -49,7 +49,16 @@ export async function getResearchUpdates(): Promise<ResearchUpdate[]> {
     date: update.dateLabel ?? displayDate(update.date), dateIso: update.date, contentType: typeByCategory[update.category!] ?? "professionalUpdate", category: update.category!,
     shortSummary: update.summary!, externalLink: update.externalLink, tags: update.tags ?? [], featuredOnHome: Boolean(update.featuredOnHome),
   }));
-  const combined = [...mappedNotes.filter((item) => item.slug !== researchNote03.slug && item.slug !== researchNote04.slug), researchNote03, researchNote04, ...mappedUpdates];
+  // Keep local Research Notes authoritative for the series so a partial Sanity
+  // result cannot hide RN03/RN04. Sanity notes with matching slugs are replaced
+  // by the complete local versions (including their video metadata).
+  const localNotes = localResearchUpdates.filter((item) => item.contentType === "researchNote");
+  const localNoteSlugs = new Set(localNotes.map((item) => item.slug));
+  const combined = [
+    ...mappedNotes.filter((item) => !localNoteSlugs.has(item.slug)),
+    ...localNotes,
+    ...mappedUpdates,
+  ];
   return combined.length ? combined : localResearchUpdates;
 }
 
