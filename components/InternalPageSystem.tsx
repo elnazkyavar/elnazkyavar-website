@@ -72,6 +72,24 @@ function statusFor(page: ContentPage, section: ContentSection) {
   return null;
 }
 
+function PhytomedicineMilestoneSeal() {
+  return (
+    <div className="phytomedicine-milestone" aria-label="100 completed peer reviews for Phytomedicine, formally recognized by Elsevier">
+      <div className="phytomedicine-seal" aria-hidden="true">
+        <span className="phytomedicine-seal-kicker">ELSEVIER</span>
+        <strong>100</strong>
+        <span>REVIEWS</span>
+        <small>REVIEWER<br />RECOGNITION</small>
+      </div>
+      <div className="phytomedicine-milestone-copy">
+        <span>Milestone</span>
+        <strong>100 completed peer reviews</strong>
+        <small>November 2025 — October 2026</small>
+      </div>
+    </div>
+  );
+}
+
 function SectionLink({ section }: { section: ContentSection }) {
   if (!section.link) return null;
   const content = <>{section.link.label} <span aria-hidden="true">↗</span></>;
@@ -131,6 +149,7 @@ export function InternalContentPage({ page }: { page: ContentPage }) {
               <div className="internal-section-content">
                 <div className="internal-section-heading">{status && <span className="internal-status">{status}</span>}<h2>{section.title}</h2></div>
                 <p>{section.body}</p>
+                {page.slug === "peer-review-editorial-service" && section.title.startsWith("Phytomedicine") && <PhytomedicineMilestoneSeal />}
                 {section.meta && <dl className="internal-meta">{section.meta.map((item) => { const [label, ...value] = item.split(": "); return <div key={item}><dt>{label}</dt><dd>{value.join(": ") || label}</dd></div>; })}</dl>}
                 {section.points && <ul className="internal-points">{section.points.map((point) => <li key={point}><span aria-hidden="true">✓</span>{point}</li>)}</ul>}
                 <SectionLink section={section} />
