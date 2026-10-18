@@ -1434,3 +1434,112 @@ a.home-v2-profile-link:hover { background:rgba(255,255,255,.07); }
 @media (max-width:560px) {
   .conference-atmosphere,.publications-atmosphere,.research-notes-atmosphere,.projects-atmosphere,.research-atmosphere,.peer-review-atmosphere,.evidence-atmosphere,.professional-engagement-atmosphere,.cv-atmosphere,.contact-atmosphere { display:none; }
 }
+
+
+/* Phytomedicine 100-review milestone */
+.internal-page--peer-review-editorial-service .internal-section--01 {
+  background:
+    radial-gradient(circle at 88% 14%, rgba(190,145,62,.12), transparent 25%),
+    linear-gradient(145deg,#fffefb 0%,#fbfaf4 58%,#f5f0e2 100%);
+}
+.internal-page--peer-review-editorial-service .internal-section--01::after {
+  content:"";
+  position:absolute;
+  inset:14px;
+  border:1px solid rgba(154,112,42,.18);
+  pointer-events:none;
+}
+.phytomedicine-milestone {
+  margin-top:2rem;
+  display:flex;
+  align-items:center;
+  gap:1.35rem;
+  width:min(100%,560px);
+  padding:1rem 1.15rem 1rem .9rem;
+  border:1px solid rgba(151,110,45,.22);
+  background:linear-gradient(135deg,rgba(255,255,255,.82),rgba(248,242,226,.72));
+  box-shadow:0 18px 45px rgba(81,66,35,.08), inset 0 1px 0 rgba(255,255,255,.9);
+  position:relative;
+  overflow:visible;
+}
+.phytomedicine-seal {
+  width:112px;
+  aspect-ratio:1;
+  flex:0 0 auto;
+  border-radius:50%;
+  display:grid;
+  place-content:center;
+  justify-items:center;
+  text-align:center;
+  position:relative;
+  transform:rotate(-7deg);
+  color:#70531f;
+  border:2px solid #b89245;
+  background:
+    radial-gradient(circle at 36% 28%,rgba(255,255,255,.95),transparent 18%),
+    radial-gradient(circle at center,#f8e9b6 0 42%,#d4ad57 43% 46%,#f7e3a5 47% 56%,#b78735 57% 60%,#ead18d 61% 100%);
+  box-shadow:
+    0 8px 22px rgba(101,73,25,.18),
+    inset 0 2px 4px rgba(255,255,255,.8),
+    inset 0 -4px 8px rgba(112,79,26,.18);
+}
+.phytomedicine-seal::before,
+.phytomedicine-seal::after {
+  content:"";
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+}
+.phytomedicine-seal::before { inset:7px; border:1px dashed rgba(111,78,26,.55); }
+.phytomedicine-seal::after { inset:14px; border:1px solid rgba(111,78,26,.25); }
+.phytomedicine-seal-kicker {
+  font-size:.47rem;
+  letter-spacing:.18em;
+  font-weight:800;
+}
+.phytomedicine-seal strong {
+  margin:.12rem 0 -.05rem;
+  font:650 2.25rem/.9 var(--font-serif),serif;
+  letter-spacing:-.05em;
+  text-shadow:0 1px 0 rgba(255,255,255,.65);
+}
+.phytomedicine-seal > span:not(.phytomedicine-seal-kicker) {
+  font-size:.5rem;
+  font-weight:800;
+  letter-spacing:.16em;
+}
+.phytomedicine-seal small {
+  margin-top:.25rem;
+  font-size:.38rem;
+  line-height:1.15;
+  letter-spacing:.11em;
+  font-weight:750;
+}
+.phytomedicine-milestone-copy {
+  min-width:0;
+  display:grid;
+  gap:.22rem;
+}
+.phytomedicine-milestone-copy > span {
+  color:#8a6728;
+  font-size:.58rem;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.phytomedicine-milestone-copy strong {
+  color:#234f57;
+  font:550 clamp(1.35rem,2vw,1.8rem)/1.1 var(--font-serif),serif;
+  letter-spacing:-.02em;
+}
+.phytomedicine-milestone-copy small {
+  color:#78807d;
+  font-size:.72rem;
+  letter-spacing:.03em;
+}
+@media (max-width:640px) {
+  .phytomedicine-milestone { align-items:flex-start; gap:1rem; padding:.9rem; }
+  .phytomedicine-seal { width:88px; }
+  .phytomedicine-seal strong { font-size:1.8rem; }
+  .phytomedicine-milestone-copy strong { font-size:1.2rem; }
+}
