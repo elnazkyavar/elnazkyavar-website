@@ -1495,3 +1495,140 @@ a.home-v2-profile-link:hover { background:rgba(255,255,255,.07); }
     padding-right:48px;
   }
 }
+
+
+/* Phytomedicine certificate detail */
+.recognition-page {
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 80% 12%, rgba(177,137,65,.10), transparent 24%),
+    linear-gradient(180deg,#f3f7f5 0%,#eef3f1 38%,#f8f8f4 100%);
+}
+.recognition-hero {
+  width:min(1180px,calc(100% - 2.8rem));
+  margin:0 auto;
+  padding:clamp(5rem,9vw,8.5rem) 0 clamp(3rem,6vw,5rem);
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:clamp(2rem,6vw,6rem);
+  align-items:end;
+}
+.recognition-eyebrow {
+  display:inline-block;
+  margin-bottom:1rem;
+  color:#7d652f;
+  font-size:.68rem;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.recognition-hero h1 {
+  margin:0;
+  max-width:780px;
+  color:#214d56;
+  font:520 clamp(2.8rem,6vw,6rem)/.94 var(--font-serif),serif;
+  letter-spacing:-.045em;
+}
+.recognition-hero h1 em { font-style:italic; }
+.recognition-hero p {
+  max-width:720px;
+  margin:1.5rem 0 0;
+  color:#657477;
+  font-size:1rem;
+  line-height:1.8;
+}
+.recognition-seal {
+  width:132px;
+  aspect-ratio:1;
+  border-radius:50%;
+  display:grid;
+  place-content:center;
+  justify-items:center;
+  text-align:center;
+  transform:rotate(5deg);
+  color:#6e521f;
+  border:2px solid #b48836;
+  background:
+    radial-gradient(circle at 34% 28%,rgba(255,255,255,.92),transparent 18%),
+    radial-gradient(circle at center,#f5e2a7 0 43%,#d0a44d 44% 48%,#f4dc98 49% 58%,#aa7b2c 59% 62%,#e8cc82 63% 100%);
+  box-shadow:0 14px 34px rgba(84,63,23,.18), inset 0 2px 3px rgba(255,255,255,.8);
+  position:relative;
+}
+.recognition-seal::before {
+  content:"";
+  position:absolute;
+  inset:10px;
+  border:1px dashed rgba(103,74,26,.5);
+  border-radius:50%;
+}
+.recognition-seal span {
+  font-size:.52rem;
+  letter-spacing:.08em;
+  font-weight:800;
+}
+.recognition-seal strong {
+  font:650 2.6rem/.92 var(--font-serif),serif;
+  letter-spacing:-.06em;
+}
+.recognition-seal small {
+  font-size:.48rem;
+  letter-spacing:.14em;
+  font-weight:800;
+}
+.recognition-certificate-wrap {
+  width:min(1240px,calc(100% - 2.8rem));
+  margin:0 auto;
+  padding:0 0 clamp(5rem,9vw,9rem);
+}
+.recognition-certificate-frame {
+  padding:clamp(.7rem,1.5vw,1.2rem);
+  background:#fff;
+  border:1px solid rgba(55,90,94,.14);
+  box-shadow:0 28px 80px rgba(42,61,63,.13);
+}
+.recognition-certificate-frame img {
+  display:block;
+  width:100%;
+  height:auto;
+}
+.recognition-certificate-loading {
+  min-height:420px;
+  display:grid;
+  place-items:center;
+  color:#788685;
+  letter-spacing:.05em;
+}
+.recognition-caption {
+  max-width:850px;
+  margin:1.5rem 0 0;
+  color:#6b7778;
+  font-size:.88rem;
+  line-height:1.75;
+}
+.recognition-back {
+  display:inline-flex;
+  margin-top:2rem;
+  color:#347a79;
+  font-size:.68rem;
+  font-weight:800;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  border-bottom:1px solid rgba(52,122,121,.35);
+}
+@media (max-width:720px) {
+  .recognition-hero {
+    width:min(100% - 2rem,1180px);
+    grid-template-columns:1fr;
+    align-items:start;
+    padding-top:4rem;
+  }
+  .recognition-seal {
+    width:84px;
+    justify-self:end;
+    margin-top:-1rem;
+  }
+  .recognition-seal strong { font-size:1.75rem; }
+  .recognition-certificate-wrap { width:calc(100% - 1.2rem); }
+  .recognition-certificate-frame { padding:.35rem; }
+  .recognition-certificate-loading { min-height:240px; }
+}
