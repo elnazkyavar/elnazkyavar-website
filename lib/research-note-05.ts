@@ -1,0 +1,51 @@
+import type { ResearchUpdate } from "./site-content-v2";
+
+export const researchNote05: ResearchUpdate = {
+  title: "The effect disappeared. Is that enough to prove the mechanism?",
+  slug: "effect-disappeared-is-that-enough-to-prove-the-mechanism",
+  date: "11 November 2026",
+  dateIso: "2026-11-11",
+  contentType: "researchNote",
+  category: "Research Note",
+  author: "Dr. Elnaz Kyavar",
+  shortSummary: "Loss-of-function evidence can establish dependency, but necessity and sufficiency answer different causal questions. What does a disappearing effect actually prove?",
+  fullBody: [
+    "A treatment produces a biological effect. A candidate receptor is inhibited, the effect disappears, and the proposed mechanism suddenly seems complete.",
+    "The experiment is powerful. But what, exactly, has it proved?",
+    "Loss-of-function experiments occupy an important position in mechanistic biology because they move beyond observing whether a molecular component changes. Instead, they ask whether the observed effect depends on that component. If disrupting a receptor, enzyme, gene, microbial function, or signaling pathway consistently weakens or abolishes a phenotype, the evidence for functional involvement becomes substantially stronger.",
+    "But dependency is not the same as a complete causal mechanism—and necessity is not sufficiency.",
+    "Consider a simple model:",
+    "Treatment → receptor activation → downstream signaling → phenotype",
+    "Suppose the treatment improves the phenotype, but pharmacological inhibition or genetic disruption of the receptor eliminates that improvement. If the perturbation is specific and experimentally valid, this result supports the conclusion that the receptor is required for the treatment-associated effect in that experimental context.",
+    "That is a meaningful causal advance.",
+    "It does not, however, establish that activating the receptor alone is sufficient to reproduce the phenotype.",
+    "This distinction matters because biological systems rarely behave as isolated linear pathways. A component may be necessary because it acts as a permissive gate, an essential cofactor, or one node within a larger network. The treatment may still require additional signals operating in parallel or upstream. Removing one indispensable component can collapse the response even when that component cannot generate the response by itself.",
+    "A familiar analogy is an electrical circuit. Breaking one required connection can turn the system off. That tells us the connection matters. It does not tell us that restoring or activating that connection alone can turn the entire system on.",
+    "Sufficiency asks a different experimental question.",
+    "If manipulating the candidate component in the absence of the original intervention can reproduce the relevant downstream effect, the evidence begins to address whether that component is sufficient under the tested conditions. Depending on the system, this might involve receptor agonism, ectopic expression, pathway activation, metabolite supplementation, microbial transfer, or another appropriately controlled gain-of-function strategy.",
+    "The two directions of perturbation therefore provide different information:",
+    "Loss of function asks: does the effect require this component?",
+    "Gain of function asks: can this component produce the effect?",
+    "Neither question should be substituted for the other.",
+    "Even apparently strong dependency experiments require further calibration. Pharmacological inhibitors may have off-target effects. Genetic disruption can trigger compensatory responses. Incomplete inhibition can obscure dependency, while developmental knockout models may alter the biological system long before the experiment begins. The relevant experimental unit, timing, dose, pathway specificity, and appropriate controls therefore remain part of the causal argument.",
+    "Context matters as well.",
+    "A pathway may be necessary under one metabolic state, cell type, disease stage, microbial community, or environmental condition and dispensable under another. Likewise, a manipulation that is sufficient in an engineered experimental system may not be sufficient under physiological conditions.",
+    "This is why mechanistic evidence should not be reduced to a simple hierarchy in which one knockout automatically “proves” a pathway. Perturbation strengthens causal inference because it challenges the proposed mechanism. What can be concluded depends on which causal question the perturbation actually tested.",
+    "The strongest mechanistic arguments often emerge when complementary experiments begin to converge: disrupting a component weakens the effect; activating or restoring it produces or recovers the predicted response; downstream events change in the expected direction; and plausible alternative routes become progressively harder to explain the observations.",
+    "At that point, the evidence is no longer merely showing that a pathway changed.",
+    "It is testing what the biological system requires, what can be sufficient, and how the proposed components are causally connected.",
+    "So when an effect disappears after pathway inhibition, the most useful question is not:",
+    "“Did this prove the mechanism?”",
+    "It is:",
+    "“What causal claim did this experiment actually test?”",
+    "Because loss of an effect can show what a system needs.",
+    "It does not automatically show what is enough to produce it."
+  ],
+  tags: ["necessity", "sufficiency", "dependency evidence", "loss of function", "gain of function", "causal inference", "mechanistic evidence"],
+  featuredOnHome: true,
+  video: {
+    src: "/videos/RN05_FINAL_Necessity_Sufficiency.mp4",
+    duration: "74 sec",
+    title: "The effect disappeared. Is that enough to prove the mechanism? — Research Note 05"
+  }
+};
