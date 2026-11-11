@@ -41,7 +41,7 @@ export const researchNote05: ResearchUpdate = {
     "Because loss of an effect can show what a system needs.",
     "It does not automatically show what is enough to produce it."
   ],
-  tags: ["necessity", "sufficiency", "dependency evidence", "loss of function", "gain of function", "causal inference", "mechanistic evidence"],
+  tags: ["biological mechanism of action", "mechanism of action study", "mechanistic evidence", "causal mechanism", "functional dependency", "necessity", "sufficiency", "loss-of-function experiment", "gain-of-function experiment", "pathway inhibition", "causal inference"],
   featuredOnHome: true,
   video: {
     src: "/videos/RN05_FINAL_NeutralWhite_v1.mp4",
