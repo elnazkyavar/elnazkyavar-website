@@ -46,6 +46,7 @@ export async function generateMetadata({ params }: NotePageProps): Promise<Metad
   return {
     title: note.title,
     description: note.shortSummary,
+    keywords: note.tags,
     alternates: { canonical: `/research-notes/${note.slug}` },
     openGraph: { type: "article", url: `/research-notes/${note.slug}`, title: `${note.title} — Dr. Elnaz Kyavar`, description: note.shortSummary, images: [{ url: "/og.png", width: 1200, height: 630, alt: `${note.title} — Dr. Elnaz Kyavar` }] },
     twitter: { card: "summary_large_image", title: `${note.title} — Dr. Elnaz Kyavar`, description: note.shortSummary, images: ["/og.png"] },
@@ -83,6 +84,7 @@ export default async function ResearchNotePage({ params }: NotePageProps) {
         "@id": videoId,
         name: note.video.title ?? note.title,
         description: note.shortSummary,
+        keywords: note.tags.join(", "),
         thumbnailUrl: [`${getSiteUrl()}/og.png`],
         uploadDate: videoUploadDate(note.dateIso),
         ...(videoDuration ? { duration: videoDuration } : {}),
