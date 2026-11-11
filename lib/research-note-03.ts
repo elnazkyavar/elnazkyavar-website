@@ -17,7 +17,7 @@ export const researchNote03: ResearchUpdate = {
     "The same calibration applies across mechanistic bioscience. Transcript abundance is not protein function. Receptor expression is not receptor activation. Enrichment of a pathway is not proof that the pathway drives the phenotype. A molecular marker can strengthen a mechanistic model, but the language of the conclusion should not outrun the experiment that produced it.",
     "A useful question is therefore not simply whether a proposed mediator changed, but what evidence would make the biological outcome depend on that mediator. That shift—from measuring presence to testing consequence—is often what separates a plausible mechanistic narrative from a demonstrated functional mechanism."
   ],
-  tags: ["mechanistic evidence", "functional dependency", "FXR", "causal inference", "evidence calibration"],
+  tags: ["biological mechanism of action", "mechanism of action study", "mechanistic evidence", "functional dependency", "receptor expression", "receptor activation", "pathway activity", "FXR", "causal inference", "evidence calibration"],
   featuredOnHome: true,
   video: {
     src: "/videos/Research_Note_03_Expression_Is_Not_Function_FINAL_v3_compatible.mp4",
