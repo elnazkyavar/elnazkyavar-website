@@ -216,7 +216,7 @@ export const researchUpdates: ResearchUpdate[] = [
       "Mechanistic rigor therefore depends not on making every result sound stronger, but on keeping the claim proportional to the evidence.",
       "In evidence-led bioscience, the strongest conclusion is not necessarily the boldest one — it is the one the data can actually support.",
     ],
-    tags: ["evidence calibration", "mechanistic reasoning", "causal inference"],
+    tags: ["biological mechanism of action", "mechanism of action study", "association versus causation", "mechanistic evidence", "mechanistic reasoning", "functional involvement", "causal inference", "evidence calibration"],
     featuredOnHome: true,
     video: {
       src: "/videos/research-note-01-final.mp4",
@@ -249,7 +249,7 @@ export const researchUpdates: ResearchUpdate[] = [
       "A strong conclusion is therefore not one that appears impossible to question. It is one whose evidential dependencies are visible: we know what supports it, which assumptions matter most, what alternative explanations remain, and what future evidence would strengthen, weaken, or revise it.",
       "Before asking how strongly a dataset supports a conclusion, it is worth asking a more revealing question: what would change the conclusion?"
     ],
-    tags: ["scientific inference", "robustness", "sensitivity analysis", "mechanistic reasoning"],
+    tags: ["mechanism of action study", "mechanistic evidence", "scientific inference", "robustness", "sensitivity analysis", "experimental unit", "causal inference", "mechanistic reasoning"],
     featuredOnHome: false,
     video: {
       src: "/videos/research-note-02-final.mp4",
