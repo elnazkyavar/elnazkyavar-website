@@ -41,7 +41,6 @@ export default async function Home() {
             </div>
             <div className="home-v2-portrait-caption">
               <p>Dr. Elnaz Kyavar</p>
-              <Link href="/fa/elnaz-kyavar" lang="fa" dir="rtl">الناز کیاور</Link>
               <span>Bioscience researcher</span>
             </div>
             <blockquote>From biological systems to defensible scientific explanations.</blockquote>
