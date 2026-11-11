@@ -44,7 +44,7 @@ export const researchNote05: ResearchUpdate = {
   tags: ["necessity", "sufficiency", "dependency evidence", "loss of function", "gain of function", "causal inference", "mechanistic evidence"],
   featuredOnHome: true,
   video: {
-    src: "/videos/RN05_FINAL_Necessity_Sufficiency.mp4",
+    src: "/videos/RN05_FINAL_NeutralWhite_v1.mp4",
     duration: "74 sec",
     title: "The effect disappeared. Is that enough to prove the mechanism? — Research Note 05"
   }
