@@ -1,6 +1,7 @@
 import { contentPages, publications as localPublications, researchUpdates as localUpdates, type ContentPage, type Publication, type ResearchUpdate } from "./site-content-v2";
 import { researchNote03 } from "./research-note-03";
 import { researchNote04 } from "./research-note-04";
+import { researchNote05 } from "./research-note-05";
 import { querySanity, sanityConfigured } from "./sanity";
 
 type PortableBlock = { _type?: string; children?: { text?: string }[] };
@@ -15,7 +16,7 @@ type SanityUpdate = {
 type SanityTalk = { title?: string; role?: string; eventName?: string; date?: string; dateLabel?: string; location?: string; status?: string; externalOfficialUrl?: string; summary?: string };
 type SanityProject = { title?: string; projectType?: string; status?: string; summary?: string; venueOrPublisher?: string; relatedThemes?: string[] };
 
-const localResearchUpdates: ResearchUpdate[] = [...localUpdates.filter((item) => item.slug !== researchNote03.slug && item.slug !== researchNote04.slug), researchNote03, researchNote04];
+const localResearchUpdates: ResearchUpdate[] = [...localUpdates.filter((item) => item.slug !== researchNote03.slug && item.slug !== researchNote04.slug && item.slug !== researchNote05.slug), researchNote03, researchNote04, researchNote05];
 
 function displayDate(iso?: string) {
   if (!iso) return "";
@@ -50,7 +51,7 @@ export async function getResearchUpdates(): Promise<ResearchUpdate[]> {
     shortSummary: update.summary!, externalLink: update.externalLink, tags: update.tags ?? [], featuredOnHome: Boolean(update.featuredOnHome),
   }));
   // Keep local Research Notes authoritative for the series so a partial Sanity
-  // result cannot hide RN03/RN04. Sanity notes with matching slugs are replaced
+  // result cannot hide RN03/RN04/RN05. Sanity notes with matching slugs are replaced
   // by the complete local versions (including their video metadata).
   const localNotes = localResearchUpdates.filter((item) => item.contentType === "researchNote");
   const localNoteSlugs = new Set(localNotes.map((item) => item.slug));
