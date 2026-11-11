@@ -21,7 +21,7 @@ export const researchNote04: ResearchUpdate = {
     "The more useful question is therefore not simply did the proposed mediator change? It is: what evidence shows that the effect traveled through it?",
     "That distinction separates a biological pathway that is compatible with the data from one that the evidence can reasonably support as mediating the phenotype."
   ],
-  tags: ["mediation", "causal inference", "mechanistic evidence", "microbiota–bile acid signaling", "evidence calibration"],
+  tags: ["biological mechanism of action", "mechanistic evidence", "causal mediation", "mediation analysis", "causal inference", "biological pathway", "microbiota–bile acid signaling", "FXR signaling", "evidence calibration"],
   featuredOnHome: true,
   video: {
     src: "/videos/RN04_FINAL_COMPLETE_WITH_LOGO_MUSIC.mp4",
