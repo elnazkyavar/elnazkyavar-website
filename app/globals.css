@@ -1632,3 +1632,47 @@ a.home-v2-profile-link:hover { background:rgba(255,255,255,.07); }
   .recognition-certificate-frame { padding:.35rem; }
   .recognition-certificate-loading { min-height:240px; }
 }
+
+/* APT 2026 interactive poster */
+.conference-poster-qr {
+  margin-top:1.35rem;
+  width:max-content;
+  max-width:100%;
+  display:inline-flex;
+  align-items:center;
+  gap:.8rem;
+  padding:.62rem .9rem .62rem .62rem;
+  border:1px solid rgba(31,83,86,.16);
+  border-radius:14px;
+  background:rgba(255,255,255,.58);
+  box-shadow:0 10px 28px rgba(27,62,65,.06);
+  color:#234f53;
+  transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;
+}
+.conference-poster-qr:hover {
+  transform:translateY(-2px);
+  border-color:rgba(31,83,86,.28);
+  box-shadow:0 14px 34px rgba(27,62,65,.09);
+}
+.conference-poster-qr img {
+  width:72px;
+  height:72px;
+  padding:5px;
+  border-radius:9px;
+  background:#fff;
+}
+.conference-poster-qr span { display:grid; gap:.2rem; }
+.conference-poster-qr small {
+  color:#799092;
+  font-size:.56rem;
+  font-weight:800;
+  letter-spacing:.15em;
+}
+.conference-poster-qr strong {
+  font:520 .95rem/1.15 var(--font-serif),serif;
+  color:#244f54;
+}
+@media (max-width:640px) {
+  .conference-poster-qr img { width:62px; height:62px; }
+  .conference-poster-qr { gap:.65rem; padding:.52rem .75rem .52rem .52rem; }
+}
