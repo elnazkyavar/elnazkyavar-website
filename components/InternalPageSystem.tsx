@@ -68,7 +68,7 @@ export function InternalHero({ eyebrow, title, intro, theme, action }: { eyebrow
 function statusFor(page: ContentPage, section: ContentSection) {
   if (page.slug === "publications") return section.number === "ACCEPTED" ? "Accepted" : "Published";
   if (page.slug === "projects") return section.body.toLowerCase().includes("invited") ? "Invited" : "In development";
-  if (page.slug === "talks-conferences") return "Accepted speaker";
+  if (page.slug === "talks-conferences") return section.number === "APT 2026" ? "Oral presentation" : "Accepted speaker";
   return null;
 }
 
@@ -139,6 +139,12 @@ export function InternalContentPage({ page }: { page: ContentPage }) {
                 {section.meta && <dl className="internal-meta">{section.meta.map((item) => { const [label, ...value] = item.split(": "); return <div key={item}><dt>{label}</dt><dd>{value.join(": ") || label}</dd></div>; })}</dl>}
                 {section.points && <ul className="internal-points">{section.points.map((point) => <li key={point}><span aria-hidden="true">✓</span>{point}</li>)}</ul>}
                 <SectionLink section={section} />
+                {page.slug === "talks-conferences" && section.number === "APT 2026" && (
+                  <a className="conference-poster-qr" href="https://api.ltb.io/show/ACUIL" target="_blank" rel="noopener noreferrer" aria-label="Open APT 2026 interactive conference poster">
+                    <img src="/apt2026-interactive-poster-qr.svg" alt="QR code for the APT 2026 interactive conference poster" />
+                    <span><small>INTERACTIVE POSTER</small><strong>Scan to explore</strong></span>
+                  </a>
+                )}
               </div>
               <div className="internal-section-geometry" aria-hidden="true"><i /><i /><i /></div>
             </article>
